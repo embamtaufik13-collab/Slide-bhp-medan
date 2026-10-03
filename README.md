@@ -13,6 +13,15 @@ diunduh dari situs lewat tombol **Unduh PPTX** di bagian bawah halaman:
 
 https://embamtaufik13-collab.github.io/Slide-bhp-medan/BHP-Medan-Paparan-Klaster-1.pptx
 
+## Halaman data lengkap
+
+`data-lengkap.html` memuat data lengkap kepailitan BHP Medan (tagihan, harta, kreditor, debitor).
+Halaman ini dibuka lewat kartu kecil "Data lengkap kepailitan BHP Medan" di tab Perkara BHP:
+
+https://embamtaufik13-collab.github.io/Slide-bhp-medan/data-lengkap.html
+
+`fonts.css` dan `logo.png` adalah aset pendukung halaman tersebut.
+
 ## Cara memperbarui slide
 
 1. Letakkan file slide (HTML) di root repo dengan nama `index.html`.
