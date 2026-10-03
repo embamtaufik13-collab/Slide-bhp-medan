@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Data Lengkap Kepailitan BHP Medan</title>
+<meta name="robots" content="noindex">
+<link rel="stylesheet" href="fonts.css">
+<style>
+:root{--maroon:#1C3A8A;--maroon-2:#102563;--maroon-3:#0B1A47;--gold:#F5C23D;--gold-2:#8C6D0C;--cream:#FFF3C7;--bg:#F4F6FB;--panel:#FFFFFF;--panel-2:#EEF2FA;--line:#D9E0EF;--ink:#141A2E;--muted:#5B6478;--f:"Plus Jakarta Sans",system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;--fs:"Source Serif 4",Georgia,"Times New Roman",serif}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--f);font-size:17px;line-height:1.5;-webkit-font-smoothing:antialiased}
+.top{position:sticky;top:0;z-index:30;background:linear-gradient(180deg,var(--maroon),var(--maroon-2));color:#fff;border-bottom:3px solid var(--gold)}
+.top .in{max-width:1360px;margin:0 auto;padding:10px 24px;display:flex;align-items:center;gap:16px}
+.top img{height:48px;width:auto;border-radius:8px}
+.top .org{line-height:1.2}.top .org small{display:block;font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--cream)}.top .org b{font-size:18px}
+.top a.back{margin-left:auto;color:var(--gold);font-weight:800;text-decoration:none;border:2px solid var(--gold);border-radius:999px;padding:8px 16px;font-size:14px;white-space:nowrap}
+.top a.back:hover{background:var(--gold);color:var(--maroon-2)}
+main{max-width:1360px;margin:0 auto;padding:28px 24px 60px}
+.eyebrow{font-size:13px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold-2);font-weight:800;margin-bottom:8px}
+.eyebrow::after{content:"";display:block;width:56px;height:4px;border-radius:2px;background:var(--gold);margin-top:8px}
+h1{font-family:var(--fs);font-weight:700;color:var(--maroon);font-size:clamp(32px,4vw,52px);line-height:1.05;letter-spacing:-.02em;margin:0 0 10px;max-width:24ch;text-wrap:balance}
+h1 mark{background:none;color:var(--maroon-2);font-style:italic}
+.lead{font-size:clamp(17px,1.5vw,21px);color:var(--muted);margin:0 0 22px;max-width:70ch;text-wrap:pretty}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:22px;padding:22px 24px;box-shadow:0 10px 30px rgba(28,58,138,.07)}
+.kpis{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;margin-bottom:18px}
+.kpi{background:var(--panel);border:1px solid var(--line);border-radius:22px;padding:18px 20px}
+.kpi .n{font-size:clamp(30px,3vw,44px);font-weight:800;color:var(--maroon);line-height:1;letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+.kpi .n small{font-size:.42em;color:var(--gold-2);margin-left:6px}
+.kpi .l{font-weight:700;margin-top:6px;font-size:15px}
+.kpi .s{font-size:13.5px;color:var(--muted);margin-top:2px}
+.grid{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:18px;margin-bottom:18px}
+.h2{font-size:22px;margin:0 0 6px;letter-spacing:-.01em}
+.chart{width:100%;height:auto;display:block}
+.legend{display:flex;flex-wrap:wrap;gap:16px;font-size:14px;color:var(--muted);margin-top:6px}
+.legend i{display:inline-block;width:16px;height:12px;border-radius:3px;margin-right:6px;vertical-align:-1px}
+.bar text{font-family:var(--f)}
+.note{padding:14px 16px;border-radius:14px;background:var(--cream);font-size:15px;margin-top:12px}
+.note b{display:block;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--gold-2);margin-bottom:4px}
+.scroll{overflow:auto;margin-top:10px}
+.dt{width:100%;border-collapse:collapse;font-size:14.5px;min-width:1240px}
+.dt th{position:sticky;top:0;background:var(--panel);text-align:left;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--gold-2);padding:10px 10px;border-bottom:2px solid var(--line);vertical-align:bottom}
+.dt td{padding:10px;border-bottom:1px solid var(--line);vertical-align:top}
+.dt td.b{font-weight:700;color:var(--maroon)}
+.dt td.num{text-align:right;font-variant-numeric:tabular-nums;font-weight:700}.dt td.num .v{white-space:nowrap}
+.dt th:nth-child(1),.dt td:nth-child(1){width:36px}.dt td:nth-child(2){min-width:150px}.dt td:nth-child(3){min-width:170px}.dt td:nth-child(4){min-width:140px}.dt td:nth-child(5){min-width:210px}.dt td:nth-child(6){min-width:120px}.dt td:nth-child(7){min-width:150px;max-width:190px}.dt td:nth-child(8){min-width:170px;max-width:200px}.dt td:nth-child(9){min-width:260px}
+.dt td.m{color:var(--muted);font-size:13.5px}
+.pill{display:inline-block;padding:4px 10px;border-radius:10px;font-size:12.5px;font-weight:700;background:var(--panel-2);color:var(--maroon);line-height:1.35}
+.src{font-size:13px;color:var(--muted);margin-top:14px}
+@media (max-width:1000px){.kpis{grid-template-columns:1fr 1fr}.grid{grid-template-columns:1fr}}
+@media (max-width:560px){main{padding:18px 16px 50px}.kpis{grid-template-columns:1fr 1fr}.card{padding:16px}.top .org b{font-size:15px}}
+</style>
+</head>
+<body>
+<header class="top"><div class="in">
+  <img src="logo.png" alt="Logo Pengayoman">
+  <div class="org"><small>Kementerian Hukum · Kanwil Sumatera Utara</small><b>Balai Harta Peninggalan Medan</b></div>
+  <a class="back" href="index.html">‹ Kembali ke slide</a>
+</div></header>
+<main>
+  <div class="eyebrow">Data lengkap · Buku Register Kepailitan dan laporan pengurusan BHP Medan</div>
+  <h1>Data lengkap kepailitan <mark>BHP Medan.</mark></h1>
+  <p class="lead">Sembilan perkara kepailitan yang sedang ditangani BHP Medan per 2 Oktober 2026: nomor perkara, debitor, pemohon, kreditor, tagihan, harta tercatat, posisi pada SOP, dan keadaan terakhir. Halaman ini melengkapi slide interaktif dan dibuka tersendiri.</p>
+
+  <div class="kpis">
+    <div class="kpi"><div class="n">9</div><div class="l">perkara kepailitan</div><div class="s">putusan 2016 sampai 2025</div></div>
+    <div class="kpi"><div class="n">47,35<small>Rp miliar</small></div><div class="l">total tagihan kreditor</div><div class="s">menurut daftar tagihan yang diakui</div></div>
+    <div class="kpi"><div class="n">23,03<small>Rp miliar</small></div><div class="l">harta tercatat</div><div class="s">enam perkara yang telah dinilai</div></div>
+    <div class="kpi"><div class="n">5,06<small>Rp miliar</small></div><div class="l">telah disetorkan kepada kreditor</div><div class="s">Gwe Tjoen, Pro Mekanika, Rata Makmur</div></div>
+  </div>
+
+  <div class="grid">
+    <div class="card">
+      <div class="eyebrow" style="margin-bottom:4px">Tagihan dan harta per perkara</div>
+      <h2 class="h2">Tagihan kreditor dibanding harta tercatat</h2>
+      <svg class="chart" id="cCase" viewBox="0 0 800 470" role="img" aria-label="Tagihan dan harta per perkara"></svg>
+      <div class="legend"><span><i style="background:#F5C23D"></i>Jumlah tagihan (Rp miliar)</span><span><i style="background:#1C3A8A"></i>Nilai harta tercatat</span></div>
+    </div>
+    <div class="card">
+      <div class="eyebrow" style="margin-bottom:4px">Cara membaca</div>
+      <h2 class="h2">Harta tercatat bukan hasil akhir pemberesan</h2>
+      <p style="margin:0 0 10px;font-size:16px">Nilai harta adalah hasil pencatatan dan penilaian yang tersedia saat ini. Perkara yang belum dinilai ditandai "belum dinilai"; nilainya ditetapkan setelah Penilai Publik menyampaikan buku hasil penilaian (tahap 13 sampai 15 SOP Kepailitan).</p>
+      <div class="note"><b>Hasil yang telah disetorkan</b>Gwe Tjoen: Rp2,74 miliar kepada kreditor separatis · PT Pro Mekanika Indonusa: Rp2,19 miliar dibagikan kepada kreditor · PT Rata Makmur: Rp133,65 juta kepada enam eks pekerja.</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="eyebrow" style="margin-bottom:4px">Tabel lengkap</div>
+    <h2 class="h2">Sembilan perkara kepailitan BHP Medan</h2>
+    <div class="scroll"><table class="dt" id="tbl"></table></div>
+    <div class="src">Sumber: Buku Register Kepailitan dan laporan pengurusan BHP Medan per 2 Oktober 2026. Nilai dalam rupiah; "belum dinilai" berarti penilaian aset belum dilaksanakan.</div>
+  </div>
+</main>
+<script>
+(function(){
+var NS="http://www.w3.org/2000/svg",C={maroon:"#1C3A8A",gold:"#F5C23D",ink:"#141A2E",muted:"#5B6478",line:"#D9E0EF"};
+function el(t,a,p){var e=document.createElementNS(NS,t);for(var k in a)e.setAttribute(k,a[k]);if(p)p.appendChild(e);return e}
+function txt(p,a,s){var e=el("text",a,p);e.textContent=s;return e}
+function fmt(x,d){return Number(x).toLocaleString("id-ID",{minimumFractionDigits:d||0,maximumFractionDigits:d||0})}
+function tgl(d){return new Date(d).toLocaleDateString("id-ID",{day:"numeric",month:"long",year:"numeric"})}
+var cases=[
+{n:"Gwe Tjoen alias Atman Wiratman",no:"2/Pdt.Sus-Pailit/2016/PN Niaga Mdn",d:"2016-02-17",pem:"Debitor sendiri",dom:"Binjai, Sumatera Utara",kred:"Kreditor separatis dan konkuren; Rp2,74 miliar telah disetorkan kepada kreditor separatis",tag:25.66,harta:8.00,hn:"10 bidang tanah dan bangunan",sop:"Tahap 16 dan 17 · penjualan aset dan penetapan pembagian",st:"6 dari 10 aset telah terjual dengan hasil Rp4,48 miliar. Debitor meninggal dunia dan ahli waris tidak diketahui; BHP mengurus harta pailit sekaligus sisa harta yang tidak ada pemiliknya."},
+{n:"Muhammad Arifin Hasibuan (CV Hitado)",no:"01/Pdt.Sus-Pailit/2017/PN Niaga Mdn",d:"2017-04-25",pem:"Muhammad Arifin Nasution",dom:"Medan, Sumatera Utara",kred:"Kreditor menurut daftar tagihan; rapat kreditor terakhir 16 September 2026",tag:1.94,harta:0.53,hn:"1 ruko; 1 mobil tidak ditemukan",sop:"Tahap 11 · rapat verifikasi dan pernyataan insolvensi",st:"Satu unit mobil yang tidak ditemukan telah dilaporkan ke kepolisian. Menunggu penetapan insolvensi untuk masuk ke tahap pemberesan."},
+{n:"PT Pro Mekanika Indonusa",no:"2/Pdt.Sus-Pailit/2018/PN Niaga Mdn",d:"2018-06-28",pem:"PT Trimurti Perkasa dan Hotmaulin Simare Mare",dom:"Medan, Sumatera Utara",kred:"Kreditor menurut daftar pembagian; Rp2,19 miliar telah dibagikan",tag:2.75,harta:3.44,hn:"Tanah, bangunan, dan 2 kendaraan, seluruhnya terjual",sop:"Tahap 20 · permohonan pengakhiran kepailitan",st:"Hasil bersih penjualan Rp2,45 miliar; Rp2,19 miliar telah dibagikan kepada kreditor. Pengakhiran kepailitan dimohonkan kepada Hakim."},
+{n:"Badaruddin HSB bin Multen Hasibuan",no:"7/Pdt.Sus-Pailit/2018/PN Niaga Mdn",d:"2018-12-20",pem:"Debitor sendiri",dom:"Aceh Singkil, Aceh",kred:"Kreditor terbesar KPP Pratama Subulussalam",tag:2.30,harta:0.93,hn:"1 tanah dan bangunan",sop:"Tahap 12 · inventarisasi aset dan sita umum",st:"Gugatan actio pauliana dimenangkan 21 Desember 2021. Sertifikat masih atas nama penerima hibah; kurator mengurus peralihannya ke dalam harta pailit sebelum penilaian dan penjualan."},
+{n:"Suparjo Rustam",no:"8/Pdt.Sus-Pailit/2019/PN Niaga Mdn",d:"2019-11-08",pem:"Debitor sendiri",dom:"Medan, Sumatera Utara",kred:"Kreditor menurut daftar tagihan yang diakui",tag:0.28,harta:null,hn:"1 mobil atas nama orang lain, belum dinilai",sop:"Tahap 13 · penawaran Penilai Publik",st:"Penelusuran aset telah dilakukan ke 3 kantor pertanahan dan 7 bank; menunggu penilaian untuk lelang."},
+{n:"PT Rimba Cipta Niaga (Direktur Hermanto)",no:"2/Pdt.Sus-Pailit/2020/PN Niaga Mdn",d:"2020-03-12",pem:"Debitor sendiri",dom:"Medan, Sumatera Utara",kred:"Tidak ada kreditor yang diakui sah",tag:0,harta:null,hn:"2 portable camp dan 1 alat pengupas kayu, belum dinilai",sop:"Tahap 13 · penawaran Penilai Publik",st:"Aset telah diinventarisasi; menunggu penilaian untuk lelang."},
+{n:"PT Rata Makmur",no:"33/Pdt.Sus-PKPU/2022/PN Niaga Mdn",d:"2023-04-10",pem:"Samin K dan kawan-kawan (eks pekerja)",dom:"Medan dan Langkat, Sumatera Utara",kred:"Enam eks pekerja (Rp133,65 juta telah dibayarkan, 43,2% dari tagihan); tagihan pajak Rp1,11 miliar",tag:1.43,harta:0.17,hn:"Uang tunai dari debitor",sop:"Tahap 18 · pembayaran kepada kreditur dan penyetoran PNBP",st:"BHP menjadi pengurus PKPU lalu kurator atas permohonan pekerja. Pembayaran kepada enam eks pekerja telah dilaksanakan sesuai daftar pembagian."},
+{n:"KSO PT Maju Abadi Jaya Utama dan PT Kurnia Putra Maduma",no:"6/Pdt.Sus-Pailit/2023/PN Niaga Mdn jo. 1123 K/Pdt.Sus-Pailit/2023",d:"2023-10-17",pem:"Koperasi Yantek Maju Bersama dan kawan-kawan",dom:"Medan, Sumatera Utara",kred:"348 eks karyawan melalui koperasi dan kawan-kawan; piutang Rp13,46 miliar dibantah, empat perkara renvoi menunggu kasasi",tag:4.29,harta:9.96,hn:"Kas",sop:"Tahap 11 · rapat verifikasi tagihan",st:"Empat perkara renvoi prosedur menunggu putusan kasasi; pembagian dilaksanakan setelah putusan berkekuatan hukum tetap."},
+{n:"Frans Winner",no:"12/Pdt.Sus-Pailit/2025/PN Niaga Mdn",d:"2025-12-11",pem:"Salim Hadi Saputra dan Maratur P. Siregar",dom:"Medan, Sumatera Utara",kred:"1 kreditor separatis dan 13 kreditor konkuren",tag:8.70,harta:null,hn:"143 item barang, belum dinilai",sop:"Tahap 12 dan 13 · inventarisasi dan penawaran Penilai Publik",st:"Insolvensi ditetapkan 23 Februari 2026. BHP diangkat karena diminta dalam petitum pemohon. Inventarisasi 143 item barang dan penyiapan penilaian untuk penjualan."}
+];
+function sn(n){return n.replace(/ alias .*$/,"").replace(/^Muhammad Arifin Hasibuan \(CV Hitado\)$/,"CV Hitado").replace(/^KSO PT Maju Abadi.*$/,"KSO Maju Abadi").replace(/ bin Multen Hasibuan$/,"").replace(/ \(Direktur Hermanto\)$/,"")}
+function drawCases(){
+  var svg=document.getElementById("cCase");svg.innerHTML="";
+  var narrow=svg.parentElement.clientWidth<620,W=narrow?440:800,L=narrow?112:215,R=narrow?40:70,T=12,rowH=narrow?46:50,arr=cases.slice().sort(function(a,b){return b.tag-a.tag}),max=27,sx=(W-L-R)/max;
+  for(var g=0;g<=25;g+=5){var x=L+g*sx;el("line",{x1:x,x2:x,y1:T,y2:T+arr.length*rowH,stroke:C.line,"stroke-width":1},svg);txt(svg,{x:x,y:T+arr.length*rowH+22,"text-anchor":"middle","font-size":12,fill:C.muted},g)}
+  txt(svg,{x:W-R+8,y:T+arr.length*rowH+22,"font-size":13,fill:C.muted},"Rp miliar");
+  arr.forEach(function(c,i){var y=T+i*rowH,g=el("g",{class:"bar"},svg);
+    txt(g,{x:L-10,y:y+rowH/2+5,"text-anchor":"end","font-size":narrow?13:15,"font-weight":600,fill:C.ink},sn(c.n));
+    el("rect",{x:L,y:y+9,height:14,rx:4,fill:C.gold,width:c.tag*sx},g);
+    el("rect",{x:L,y:y+27,height:14,rx:4,fill:C.maroon,width:c.harta==null?0:c.harta*sx},g);
+    txt(g,{x:L+c.tag*sx+6,y:y+21,"font-size":narrow?12:13,fill:C.ink},c.tag?fmt(c.tag,2):"tidak ada kreditor yang diakui");
+    txt(g,{x:L+(c.harta==null?0:c.harta*sx)+6,y:y+39,"font-size":narrow?12:13,fill:c.harta==null?C.muted:C.maroon},c.harta==null?"belum dinilai":fmt(c.harta,2))});
+  svg.setAttribute("viewBox","0 0 "+W+" "+(T+arr.length*rowH+32));
+}
+function drawTable(){
+  var t=document.getElementById("tbl");
+  t.innerHTML="<thead><tr><th>No</th><th>Nomor perkara dan tanggal putusan pailit</th><th>Debitor dan domisili</th><th>Pemohon menurut register</th><th>Kreditor</th><th>Tagihan (Rp)</th><th>Harta tercatat (Rp)</th><th>Posisi di SOP Kepailitan</th><th>Keadaan terakhir</th></tr></thead><tbody>"+
+    cases.map(function(c,i){
+      return "<tr><td>"+(i+1)+"</td><td><span class='b' style='color:var(--maroon);font-weight:700'>"+c.no+"</span><br><span class='m'>"+tgl(c.d)+"</span></td><td class='b'>"+c.n+"<br><span class='m' style='font-weight:400'>"+c.dom+"</span></td><td>"+c.pem+"</td><td>"+c.kred+"</td><td class='num'><span class='v'>"+(c.tag?fmt(c.tag*1e9,0):"0")+"</span></td><td class='num'>"+(c.harta==null?"<span class='m' style='font-weight:400'>belum dinilai</span>":"<span class='v'>"+fmt(c.harta*1e9,0)+"</span>")+"<br><span class='m' style='font-weight:400'>"+c.hn+"</span></td><td><span class='pill'>"+c.sop+"</span></td><td class='m'>"+c.st+"</td></tr>"}).join("")+
+    "</tbody>";
+}
+drawCases();drawTable();
+var rt;window.addEventListener("resize",function(){clearTimeout(rt);rt=setTimeout(drawCases,200)});
+})();
+</script>
+</body>
+</html>
