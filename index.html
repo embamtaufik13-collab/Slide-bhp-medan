@@ -535,7 +535,7 @@ table.sop td.pel.off{background:#7F7F7F}
       </div>
       <div class="card detail" id="detail" aria-live="polite"></div>
     </div>
-    <a class="thumb" href="data-lengkap.html" target="_blank" rel="noopener"><span class="pic"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span><span><b>Data lengkap kepailitan BHP Medan</b><span>Tagihan, harta, kreditor, dan debitor per perkara. Dibuka di halaman tersendiri.</span></span><span class="arr">›</span></a>
+    <a class="thumb" href="data-lengkap.html"><span class="pic"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span><span><b>Data lengkap kepailitan BHP Medan</b><span>Tagihan, harta, kreditor, dan debitor per perkara. Tombol kembali tersedia di halaman tersebut.</span></span><span class="arr">›</span></a>
     <div class="take"><span class="k">Intinya</span>Setiap perkara berada pada tahap SOP yang jelas dengan output yang baku, dan setiap rapat dipimpin Hakim Pengawas.</div>
   </section>
 
@@ -1008,6 +1008,7 @@ table.sop td.pel.off{background:#7F7F7F}
   var sx0=null;document.addEventListener("touchstart",function(e){sx0=e.touches[0].clientX},{passive:true});document.addEventListener("touchend",function(e){if(sx0==null)return;var dx=e.changedTouches[0].clientX-sx0;if(Math.abs(dx)>70&&!e.target.closest("svg,.tabs"))go(dx<0?cur+1:cur-1);sx0=null},{passive:true});
   var rt;window.addEventListener("resize",function(){clearTimeout(rt);rt=setTimeout(function(){if(cur===2){drawCmp();drawDonut(false)}if(cur===3)sopArrowsAll()},200)});
   var st=0;try{st=+(localStorage.getItem("bhp-data-scene3")||0)}catch(e){}
+  if(location.hash==="#perkara"){st=1;try{history.replaceState(null,"",location.pathname+location.search)}catch(e){}}
   go(st>=0&&st<scenes.length?st:0);
 })();
 </script>
