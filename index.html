@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Data Perkara BHP Medan</title>
-<meta name="description" content="Data interaktif BHP Medan untuk RDP Komisi XIII DPR RI: perkara kepailitan, lama perkara, SOP kepailitan, pembagian peran, dan usulan rumusan pasal RUU Profesi Kurator.">
+<meta name="description" content="Data interaktif BHP Medan untuk RDP Komisi XIII DPR RI: perkara kepailitan yang ditangani BHP Medan, lama perkara, penunjukan kurator menurut SIPP PN Medan, SOP kepailitan, dan pembagian peran.">
 <style>
 @font-face {
   font-family: 'Plus Jakarta Sans';
@@ -369,6 +369,7 @@ h1.light mark{color:var(--gold);font-style:italic}
 @keyframes tk{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
 @media (max-width:1000px){.tiles{grid-template-columns:1fr 1fr}.race .r{grid-template-columns:120px 1fr 60px}.dash{margin:-28px -24px 0;min-height:0}}
 @media (max-width:560px){.dash{margin:-18px -16px 0;padding:26px 16px 24px}.tiles{grid-template-columns:1fr 1fr}.tile{min-height:120px;padding:14px}.ring{width:70px;height:70px}.race .r{grid-template-columns:96px 1fr 54px;font-size:13px}}
+.ruu{margin-top:16px}.ruu ol{margin:0 0 12px;padding-left:22px;display:grid;gap:8px;font-size:16.5px;font-weight:700}.ruu .note{padding:14px 16px;border-radius:14px;background:var(--cream);border:1px solid var(--gold);font-size:15.5px}.ruu .note b{display:block;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--gold-2);margin-bottom:4px}
 </style>
 </head>
 <body>
@@ -385,7 +386,6 @@ h1.light mark{color:var(--gold);font-style:italic}
     <button role="tab" data-s="3" aria-selected="false"><i>4</i>Penunjukan Kurator</button>
     <button role="tab" data-s="4" aria-selected="false"><i>5</i>SOP Kepailitan</button>
     <button role="tab" data-s="5" aria-selected="false"><i>6</i>Pembagian Peran</button>
-    <button role="tab" data-s="6" aria-selected="false"><i>7</i>Usulan Pasal</button>
   </nav>
 </header>
 
@@ -474,30 +474,27 @@ h1.light mark{color:var(--gold);font-style:italic}
   <section class="scene" data-scene="5">
     <div class="eyebrow">Pembagian Peran</div>
     <h1>BHP dan kurator perseorangan: <mark>siapa mengerjakan apa.</mark></h1>
-    <p class="lead">Keduanya kurator yang sama di mata Hakim Pengawas. Yang berbeda hanya kedudukan dan sumber kewenangannya.</p>
+    <p class="lead">Dalam kepailitan, BHP berkedudukan sebagai kurator sebagaimana kurator perseorangan yang ditunjuk pengadilan. Yang dipisahkan adalah dasar hukum, pelaksanaan, dan pertanggungjawabannya, bukan lembaganya.</p>
     <div class="roles">
-      <div class="role bhp"><h3>BHP</h3><div class="s">Kurator negara dan pelaksana tugas keperdataan</div>
-        <ul><li>Kewenangan dari undang-undang, tanpa izin atau pendaftaran</li><li>Dijalankan pejabat Kurator Keperdataan sesuai SOP Kepailitan</li><li>Wajib pada perkara tertentu, boleh semua jenis perkara</li><li>Imbalan jasa menjadi PNBP</li><li>Dibina Kementerian, tunduk pada kode etik ASN</li></ul></div>
-      <div class="role mid"><div class="e">Sama</div><div>Sebagai kurator, diawasi Hakim Pengawas</div><div>Satu standar profesi kurator</div><div>Pembagian tugas, tanggung jawab, dan imbalan ditetapkan sejak awal bila bertugas bersama</div><div>Wajib serah berkas saat kurator berganti</div></div>
-      <div class="role priv"><h3>Kurator perseorangan</h3><div class="s">Orang perseorangan</div>
-        <ul><li>Terdaftar pada Kementerian, memiliki keahlian khusus</li><li>Perkara atas usulan pemohon</li><li>Pada perkara tertentu menjadi kurator tambahan</li><li>Imbalan jasa menjadi penghasilan</li><li>Tunduk pada kode etik organisasi profesi</li></ul></div>
+      <div class="role bhp"><h3>BHP</h3><div class="s">Kurator negara</div>
+        <ul><li>Berjalan sesuai SOP Kepailitan: putusan pengadilan › tim Kurator Keperdataan › pengurusan dan pemberesan di bawah Hakim Pengawas</li><li>Tim melapor per triwulan</li><li>Imbalan jasa disetor ke kas negara sebagai PNBP</li><li>Di luar kepailitan, BHP berkedudukan sebagai wali pengawas, pendamping pengawas, dan tugas lain menurut KUHPerdata, dengan dasar dan pertanggungjawaban yang terpisah</li></ul></div>
+      <div class="role mid"><div class="e">Sama</div><div>Sebagai kurator, ditunjuk pengadilan dan diawasi Hakim Pengawas</div><div>Dapat bekerja sama dalam satu perkara</div><div>PT Jasa Prima Mandiri (2015 s.d. 2019): kerja sama berjalan baik, harta Rp12,85 miliar dibereskan dalam sekitar 4 tahun</div></div>
+      <div class="role priv"><h3>Kurator perseorangan</h3><div class="s">Orang perseorangan yang ditunjuk pengadilan</div>
+        <ul><li>Perkara atas usulan pemohon</li><li>Dapat bekerja sama dengan kurator BHP dalam satu perkara</li><li>Kendala: belum ada aturan pembagian imbalan jasa dan tanggung jawab saat bekerja bersama BHP</li><li>Kendala komunikasi bila PKPU ditangani kurator perseorangan dan kepailitan oleh BHP; diusulkan BHP juga menjadi pengurus PKPU</li></ul></div>
     </div>
     <div class="wajib card">
-      <h2>Pengadilan wajib mengangkat BHP bila:</h2>
+      <h2>Perkara khusus yang semestinya ditangani BHP:</h2>
       <div class="list" id="wajib"></div>
       <div class="why" id="why"></div>
     </div>
-    <div class="take"><span class="k">Intinya</span>Di luar perkara wajib itu, pemohon tetap bebas memilih kurator. BHP tidak berebut perkara; BHP mengisi perkara yang tidak diambil pihak lain.</div>
+    <div class="card ruu">
+      <div class="eyebrow" style="margin-bottom:4px">Usulan dalam RUU</div>
+      <ol><li>Pengakuan BHP sebagai kurator negara yang dapat menangani seluruh jenis perkara kepailitan.</li><li>Kriteria perkara khusus BHP, yang sekaligus menjadi larangan bagi kurator perseorangan.</li></ol>
+      <div class="note"><b>Diatur di RUU Kepailitan dan PKPU</b>Kriteria dan tata cara penunjukan BHP pada perkara tertentu, kepailitan harta peninggalan tanpa ahli waris, dan kelanjutan perkara apabila debitor menghilang.</div>
+    </div>
+    <div class="take"><span class="k">Intinya</span>Di luar perkara khusus itu, para pihak tetap bebas memilih kurator. RUU Profesi Kurator cukup memuat dasar penugasannya; kriteria dan tata cara penunjukan diatur dalam RUU Kepailitan dan PKPU.</div>
   </section>
 
-  <!-- 6 USULAN PASAL -->
-  <section class="scene" data-scene="6">
-    <div class="eyebrow">Usulan Rumusan Pasal</div>
-    <h1>Empat pasal yang <mark>siap dipakai</mark> dalam RUU Profesi Kurator.</h1>
-    <p class="lead">Dari Lampiran II dokumen BHP Medan. Klik judul untuk membuka, Salin untuk menyalin teksnya.</p>
-    <div id="pasal"></div>
-    <div class="take"><span class="k">Intinya</span>Satu pasal untuk tiap kendala: tugas bersama dan serah terima, kedudukan BHP, penugasan pada perkara tertentu, serta koordinasi dan dukungan instansi.</div>
-  </section>
 </main>
 
 <div class="foot"><div class="in">
@@ -529,9 +526,9 @@ h1.light mark{color:var(--gold);font-style:italic}
   // ===== DATA (Lampiran I dokumen) =====
   var cases=[
     {id:"gwe",n:"Gwe Tjoen",no:"2/Pdt.Sus-Pailit/2016/PN Niaga Mdn",d:"2016-02-17",pem:"Debitor sendiri",dom:"Binjai, Sumatera Utara",tag:25.66,harta:8.00,hn:"10 bidang tanah dan bangunan",st:"6 dari 10 aset terjual dengan hasil Rp4,48 miliar; Rp2,74 miliar disetor ke kreditor separatis. Debitor meninggal dunia, ahli waris tidak diketahui.",les:"BHP harus mengurus harta pailit sekaligus sisa harta yang tidak ada pemiliknya. Perlu penugasan BHP yang jelas dan pertanggungjawaban yang terpisah untuk kedua tugas itu.",q:"Pertanyaan 2 dan 3"},
-    {id:"hit",n:"CV Hitado",full:"Muhammad Arifin Hasibuan (CV Hitado)",no:"01/Pdt.Sus-Pailit/2017/PN Niaga Mdn",d:"2017-04-25",pem:"Muhammad Arifin Nasution",dom:"Medan, Sumatera Utara",tag:1.94,harta:0.53,hn:"1 ruko; 1 mobil tidak ditemukan",st:"Kehilangan mobil dilaporkan ke kepolisian. Penetapan insolvensi belum terbit; rapat kreditor 16 September 2026.",les:"Serah terima saat pergantian pelaksana harus diwajibkan.",q:"Pertanyaan 1 dan koordinasi"},
+    {id:"hit",n:"CV Hitado",full:"Muhammad Arifin Hasibuan (CV Hitado)",no:"01/Pdt.Sus-Pailit/2017/PN Niaga Mdn",d:"2017-04-25",pem:"Muhammad Arifin Nasution",dom:"Medan, Sumatera Utara",tag:1.94,harta:0.53,hn:"1 ruko; 1 mobil tidak ditemukan",st:"Kehilangan mobil dilaporkan ke kepolisian. Penetapan insolvensi belum terbit; rapat kreditor 16 September 2026.",les:"Perkara kecil dengan aset yang hilang tetap harus dituntaskan; penetapan insolvensi yang lama menahan pemberesan.",q:"Pertanyaan 1 dan 3"},
     {id:"pro",n:"PT Pro Mekanika Indonusa",sn:"Pro Mekanika",no:"2/Pdt.Sus-Pailit/2018/PN Niaga Mdn",d:"2018-06-28",pem:"PT Trimurti Perkasa dan Hotmaulin Simare Mare",dom:"Medan, Sumatera Utara",tag:2.75,harta:3.44,hn:"Tanah, bangunan, dan 2 kendaraan, seluruhnya terjual",st:"Hasil bersih Rp2,45 miliar; dibagikan Rp2,19 miliar. Pengakhiran kepailitan dimohonkan.",les:"Bila harta jelas, pemberesan oleh BHP dapat tuntas.",q:"Pertanyaan 1"},
-    {id:"bad",n:"Badaruddin HSB",sn:"Badaruddin",no:"7/Pdt.Sus-Pailit/2018/PN Niaga Mdn",d:"2018-12-20",pem:"Debitor sendiri",dom:"Aceh Singkil, Aceh",tag:2.30,harta:0.93,hn:"1 tanah dan bangunan",st:"Actio pauliana dimenangkan 21 Desember 2021, tetapi sertifikat masih atas nama penerima hibah. Kreditor terbesar KPP Pratama Subulussalam.",les:"Kurator membutuhkan dukungan kantor pertanahan untuk mengamankan aset.",q:"Koordinasi"},
+    {id:"bad",n:"Badaruddin HSB",sn:"Badaruddin",no:"7/Pdt.Sus-Pailit/2018/PN Niaga Mdn",d:"2018-12-20",pem:"Debitor sendiri",dom:"Aceh Singkil, Aceh",tag:2.30,harta:0.93,hn:"1 tanah dan bangunan",st:"Actio pauliana dimenangkan 21 Desember 2021, tetapi sertifikat masih atas nama penerima hibah. Kreditor terbesar KPP Pratama Subulussalam.",les:"Aset yang dimenangkan lewat actio pauliana belum dapat dibereskan sebelum sertifikatnya beralih; perkara tetap dijalankan BHP.",q:"Pertanyaan 1"},
     {id:"sup",n:"Suparjo Rustam",sn:"Suparjo",no:"8/Pdt.Sus-Pailit/2019/PN Niaga Mdn",d:"2019-11-08",pem:"Debitor sendiri",dom:"Medan, Sumatera Utara",tag:0.28,harta:null,hn:"1 mobil atas nama orang lain, belum dinilai",st:"Penelusuran ke 3 kantor pertanahan dan 7 bank; menunggu penilaian untuk lelang.",les:"Harta kecil dan sulit ditelusuri; perkara seperti ini tidak diminati kurator yang bekerja atas dasar imbalan.",q:"Pertanyaan 3"},
     {id:"rim",n:"PT Rimba Cipta Niaga",sn:"Rimba Cipta",no:"2/Pdt.Sus-Pailit/2020/PN Niaga Mdn",d:"2020-03-12",pem:"Debitor sendiri",dom:"Medan, Sumatera Utara",tag:0,harta:null,hn:"2 portable camp dan 1 alat pengupas kayu, belum dinilai",st:"Tidak ada kreditor yang diakui sah; menunggu penilaian untuk lelang.",les:"Perkara tanpa kreditor yang diakui tetap harus diselesaikan sampai tuntas.",q:"Pertanyaan 3"},
     {id:"rat",n:"PT Rata Makmur",sn:"Rata Makmur",no:"33/Pdt.Sus-PKPU/2022/PN Niaga Mdn",d:"2023-04-10",pem:"Samin K dan kawan-kawan (eks pekerja)",dom:"Medan dan Langkat, Sumatera Utara",tag:1.43,harta:0.17,hn:"Uang tunai dari debitor",st:"Enam eks pekerja menerima Rp133,65 juta (43,2% dari tagihan); tagihan pajak Rp1,11 miliar belum terbayar.",les:"BHP menjadi pengurus PKPU lalu kurator atas permohonan pekerja. Perkara pekerja perlu pelaksana yang pasti.",q:"Pertanyaan 1 dan 3"},
@@ -684,45 +681,15 @@ h1.light mark{color:var(--gold);font-style:italic}
 
   // ===== LAYAR 5: perkara wajib BHP =====
   var wajib=[
-    ["Debitor meninggal tanpa ahli waris, atau hartanya tidak terurus","BHP wajib mengurus harta peninggalan tak terurus (Pasal 1126 dan 1127 KUHPerdata).","Gwe Tjoen: debitor meninggal, ahli waris tidak diketahui, perkara berjalan lebih dari 10 tahun."],
-    ["Debitor tidak diketahui keberadaannya","BHP mengurus harta orang yang tidak hadir (Pasal 463 KUHPerdata).","Belum ada contoh di BHP Medan."],
-    ["Ahli waris masih anak atau dalam pengampuan","BHP menjadi wali pengawas dan pengampu pengawas (Pasal 366 dan 449 KUHPerdata).","Belum ada contoh di BHP Medan."],
-    ["Permohonan diajukan pekerja","Upah pekerja didahulukan (Pasal 95 UU Ketenagakerjaan); perkara pekerja butuh pelaksana yang pasti.","PT Rata Makmur: BHP menjadi pengurus PKPU lalu kurator; enam eks pekerja menerima 43,2% tagihannya."],
+    ["Debitor meninggal tanpa ahli waris, atau hartanya tidak terurus","BHP mengurus harta peninggalan yang tidak terurus menurut KUHPerdata.","Gwe Tjoen: debitor meninggal, ahli waris tidak diketahui, perkara berjalan lebih dari 10 tahun."],
+    ["Debitor tidak diketahui keberadaannya","BHP mengurus harta orang yang tidak hadir menurut KUHPerdata.","Belum ada contoh di BHP Medan."],
+    ["Permohonan diajukan pekerja","Perkara pekerja membutuhkan pelaksana yang pasti agar hak pekerja tidak terhenti.","PT Rata Makmur: BHP menjadi pengurus PKPU lalu kurator; enam eks pekerja menerima 43,2% tagihannya."],
+    ["Perkara dengan harta kecil","Harta kecil dan sulit ditelusuri tetap harus dibereskan sampai tuntas; BHP tidak bergantung pada imbalan.","Suparjo Rustam: 1 mobil atas nama orang lain, belum dinilai. PT Rimba Cipta Niaga: tidak ada kreditor yang diakui sah."],
     ["Perkara kehilangan kurator","Perkara tidak boleh terhenti bila kurator berhenti, diberhentikan, atau meninggal dunia.","Belum ada contoh di BHP Medan."]
   ];
   var wSel=0;
   function drawWajib(){var l=document.getElementById("wajib");l.innerHTML="";wajib.forEach(function(w,i){var b=document.createElement("button");b.setAttribute("aria-pressed",i===wSel?"true":"false");b.innerHTML="<i>"+(i+1)+"</i>"+w[0];b.addEventListener("click",function(){wSel=i;drawWajib()});b.addEventListener("pointerenter",function(){wSel=i;drawWajib()});l.appendChild(b)});var w=wajib[wSel];document.getElementById("why").innerHTML="<div><b>Kaitan dengan tugas BHP</b>"+w[1]+"</div><div><b>Contoh di BHP Medan</b>"+w[2]+"</div>"}
 
-  // ===== LAYAR 6: usulan pasal (Lampiran II) =====
-  var pasal=[
-    {t:"Tugas Bersama dan Serah Terima",a:"Menjawab Pertanyaan 1: pembagian imbalan dan tanggung jawab, serta serah terima",ay:[
-      "Dalam hal diangkat lebih dari satu Kurator atau Pengurus, Hakim Pengawas menetapkan pembagian tugas, tanggung jawab, dan imbalan jasa masing-masing paling lambat pada rapat Kreditor pertama.",
-      "Bagian imbalan jasa Balai Harta Peninggalan merupakan penerimaan negara bukan pajak.",
-      "Kurator atau Pengurus yang digantikan, termasuk Pengurus dalam hal penundaan kewajiban pembayaran utang berakhir dengan pernyataan pailit, wajib menyerahkan berkas, harta, dan laporan kepada Kurator paling lama 14 (empat belas) hari."]},
-    {t:"Kedudukan Balai Harta Peninggalan",a:"Menjawab Pertanyaan 2: kedudukan BHP dan pemisahan dua tugas",ay:[
-      "Balai Harta Peninggalan merupakan Kurator negara dan Pengurus negara yang dapat menangani seluruh jenis perkara kepailitan dan penundaan kewajiban pembayaran utang.",
-      "Kewenangan Balai Harta Peninggalan sebagai Kurator dan Pengurus bersumber dari Undang-Undang ini dan tidak memerlukan izin atau pendaftaran.",
-      "Tugas Kurator dan Pengurus pada Balai Harta Peninggalan dilaksanakan oleh pegawai aparatur sipil negara yang menduduki jabatan fungsional Kurator Keperdataan.",
-      "Dalam hal Balai Harta Peninggalan menjalankan tugas keperdataan dan tugas Kurator dalam perkara yang sama, masing-masing tugas dilaksanakan oleh pejabat yang berbeda dan dipertanggungjawabkan secara terpisah."]},
-    {t:"Penugasan Balai Harta Peninggalan pada Perkara Tertentu",a:"Menjawab Pertanyaan 3: kewajiban memakai BHP pada perkara tertentu",ay:[
-      {t:"Pengadilan wajib mengangkat Balai Harta Peninggalan sebagai Kurator atau Pengurus dalam hal:",sub:["tidak terdapat usulan Kurator atau Pengurus;","Debitor telah meninggal dunia dan tidak terdapat ahli waris atau harta peninggalannya tidak terurus;","Debitor tidak diketahui tempat tinggal atau keberadaannya;","ahli waris atau pihak yang berkepentingan masih di bawah umur atau berada di bawah pengampuan;","permohonan diajukan oleh pekerja; atau","Kurator atau Pengurus berhenti, diberhentikan, atau meninggal dunia, dan tidak terdapat usulan pengganti yang memenuhi syarat."]},
-      "Dalam perkara sebagaimana dimaksud pada ayat (1) huruf b sampai dengan huruf f, Kurator atau Pengurus orang perseorangan dapat diangkat sebagai Kurator atau Pengurus tambahan.",
-      "Di luar perkara sebagaimana dimaksud pada ayat (1), Pengadilan mengangkat Kurator atau Pengurus berdasarkan usulan pemohon.",
-      "Kriteria rinci dan tata cara penunjukan sebagaimana dimaksud pada ayat (1) diatur dalam Undang-Undang mengenai kepailitan dan penundaan kewajiban pembayaran utang."]},
-    {t:"Koordinasi dan Dukungan Instansi",a:"Menjawab kebutuhan koordinasi: pengadilan, kantor pertanahan, dan data kurator",ay:[
-      "Menteri menyelenggarakan data Kurator dan Pengurus aktif beserta jumlah perkara yang sedang ditangani, yang dapat diakses oleh Pengadilan sebelum mengangkat Kurator atau Pengurus.",
-      "Pengadilan memberitahukan pengangkatan Kurator dan menyampaikan salinan putusan kepada Kurator secara elektronik pada hari putusan diucapkan.",
-      "Instansi pemerintah, kantor pertanahan, bank, dan lembaga keuangan wajib menindaklanjuti permintaan Kurator paling lama 14 (empat belas) hari kerja sejak permintaan diterima.",
-      "Balai Harta Peninggalan, Pengadilan, dan organisasi profesi Kurator menyelenggarakan forum koordinasi berkala tanpa mengurangi kewenangan Hakim Pengawas."]}
-  ];
-  function pasalText(p,i){var L=["Usulan Pasal "+(i+1)+" ("+p.t+")"];p.ay.forEach(function(a,k){if(typeof a==="string")L.push("("+(k+1)+") "+a);else{L.push("("+(k+1)+") "+a.t);a.sub.forEach(function(s,j){L.push("    "+String.fromCharCode(97+j)+". "+s)})}});return L.join("\n")}
-  function drawPasal(){var w=document.getElementById("pasal");if(w.dataset.ready)return;w.dataset.ready="1";
-    pasal.forEach(function(p,i){var d=document.createElement("div");d.className="pasal"+(i===0?" open":"");
-      d.innerHTML="<button class='ph' aria-expanded='"+(i===0)+"'><span class='no'>"+(i+1)+"</span><span><b>Usulan Pasal "+(i+1)+": "+p.t+"</b><small>"+p.a+"</small></span><span class='arr'>⌄</span></button><div class='pb'><ol>"+p.ay.map(function(a){return typeof a==="string"?"<li>"+a+"</li>":"<li>"+a.t+"<ol>"+a.sub.map(function(s){return "<li>"+s+"</li>"}).join("")+"</ol></li>"}).join("")+"</ol><div class='ft'><span class='ans'>Bahan pertimbangan; nomor pasal menyesuaikan sistematika RUU.</span><button class='copy'>Salin pasal</button></div></div>";
-      d.querySelector(".ph").addEventListener("click",function(){var o=d.classList.toggle("open");d.querySelector(".ph").setAttribute("aria-expanded",o)});
-      d.querySelector(".copy").addEventListener("click",function(){var b=this,t=pasalText(p,i);function done(){b.textContent="Tersalin";setTimeout(function(){b.textContent="Salin pasal"},1500)}function fb(){var ta=document.createElement("textarea");ta.value=t;document.body.appendChild(ta);ta.select();try{document.execCommand("copy")}catch(e){}ta.remove()}if(navigator.clipboard&&navigator.clipboard.writeText)navigator.clipboard.writeText(t).then(done,function(){fb();done()});else{fb();done()}});
-      w.appendChild(d)});
-  }
 
   // ===== NAVIGASI =====
   var cur=0,scenes=document.querySelectorAll(".scene"),tabs=document.querySelectorAll(".tabs button"),dots=document.getElementById("dots");
@@ -739,7 +706,7 @@ h1.light mark{color:var(--gold);font-style:italic}
     setTimeout(function(){race.querySelectorAll(".r").forEach(function(r,k){var c=arr[k];r.querySelector(".fi").style.transitionDelay=(k*90)+"ms";r.querySelector(".fi").style.width=(c.tag/mx*100)+"%";var v=r.querySelector(".v");tween(1300,k*90,function(p){v.textContent=c.tag?fmt(c.tag*p,2):"0"})})},200);
     var facts=cases.map(function(c){return (c.full||c.n)+" · putusan "+tgl(c.d)+" · "+fmt(yrs(c.d),1)+" tahun berjalan · "+(c.tag?"tagihan Rp"+fmt(c.tag,2)+" miliar":"tidak ada kreditor diakui")});
     var t=document.getElementById("tkT");function tk(){t.style.animation="none";void t.offsetWidth;t.style.animation="";t.textContent=facts[tkI%facts.length];tkI++}tk();clearInterval(tkTimer);tkTimer=setInterval(tk,3200)}
-  var drawers=[drawDash,function(){renderDetail();drawCases(true)},drawGantt,function(){drawCmp();drawDonut(true);drawTable()},drawSteps,drawWajib,drawPasal];
+  var drawers=[drawDash,function(){renderDetail();drawCases(true)},drawGantt,function(){drawCmp();drawDonut(true);drawTable()},drawSteps,drawWajib];
   function go(n){cur=Math.max(0,Math.min(scenes.length-1,n));hideTip();clearInterval(sopTimer);clearInterval(tkTimer);
     scenes.forEach(function(s,i){s.classList.toggle("on",i===cur)});tabs.forEach(function(b,i){b.setAttribute("aria-selected",i===cur?"true":"false");if(i===cur)b.scrollIntoView({block:"nearest",inline:"center"})});
     dots.querySelectorAll("i").forEach(function(d,i){d.classList.toggle("on",i===cur)});
