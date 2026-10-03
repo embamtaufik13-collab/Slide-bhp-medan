@@ -406,17 +406,24 @@ h1.light mark{color:var(--gold);font-style:italic}
 .sop-grid h4{margin:-8px -12px 8px;padding:4px 12px;background:#DCE6F1;font-size:12.5px;font-weight:700;border-bottom:1px solid #000}
 .sop-grid ol,.sop-grid ul{margin:0;padding-left:22px;display:grid;gap:4px}
 .sop-grid ul{list-style:none;padding-left:8px}.sop-grid p{margin:0}
-.sop-wrap{overflow:auto;margin-top:18px;border:1px solid var(--line);border-radius:12px;background:#fff}
+.sop-wrap{margin-top:18px;border:1px solid var(--line);border-radius:12px;background:#fff;overflow:hidden}
+.sop-scroll{overflow:auto}
+.sop-in{position:relative}
+svg.sop-arr{position:absolute;left:0;top:0;pointer-events:none;overflow:visible}
+svg.sop-arr .al{font:700 10px Arial,Helvetica,sans-serif;fill:#111}
 .sop-ttl{text-align:center;font-family:Arial,Helvetica,sans-serif;font-weight:700;font-size:14px;padding:12px 10px 8px;line-height:1.35}
-table.sop{display:table;gap:0;margin:0;border-collapse:collapse;min-width:1120px;width:100%;font-family:Arial,Helvetica,sans-serif;font-size:12.5px;line-height:1.35}
+table.sop{display:table;gap:0;margin:0;border-collapse:collapse;width:100%;table-layout:fixed;font-family:Arial,Helvetica,sans-serif;font-size:12.5px;line-height:1.35}
 table.sop th{background:#D9D9D9;border:1px solid #000;padding:6px 8px;font-weight:700;text-align:center;font-size:12px}
-table.sop td{border:1px solid #000;padding:8px 8px;vertical-align:middle}
-table.sop td.no{text-align:center;width:38px}table.sop td.keg{min-width:240px;max-width:320px}table.sop td.kel,table.sop td.out{min-width:160px;max-width:240px}table.sop td.wk{text-align:center;white-space:nowrap}table.sop td.ket{min-width:150px;max-width:240px;font-size:12px}
-table.sop td.pel{width:84px;min-width:84px;text-align:center;background:#fff}
+table.sop td{border:1px solid #000;padding:9px 10px;vertical-align:middle;overflow-wrap:break-word}
+table.sop tbody tr{height:64px}
+table.sop td.no{text-align:center}table.sop td.wk{text-align:center}table.sop td.ket{font-size:12px}table.sop td.kel,table.sop td.out,table.sop td.ket{text-align:left}
+table.sop td.pel{text-align:center;background:#fff;padding:9px 4px}
 table.sop td.pel.off{background:#7F7F7F}
-.mk{display:inline-block;width:56px;height:24px;border-radius:5px;background:#FF0000;box-shadow:0 2px 3px rgba(0,0,0,.35);font-style:normal;font-size:10px;font-weight:800;line-height:24px;color:#000}
+.mk{position:relative;z-index:1;vertical-align:middle;display:inline-block;width:58px;height:26px;border-radius:5px;background:#FF0000;box-shadow:0 2px 3px rgba(0,0,0,.35);font-style:normal;font-size:10px;font-weight:800;line-height:24px;color:#000}
 .mk.mulai,.mk.selesai{background:#FFFF00;border-radius:999px;width:64px}
-.mk.keputusan{background:#4F81BD;transform:rotate(45deg);width:22px;height:22px;border-radius:3px;line-height:22px}
+.mk.keputusan{background:#4F81BD;transform:rotate(45deg);width:26px;height:26px;border-radius:3px;line-height:26px;margin:6px 0}
+.mk.prosesg{background:#92D050}
+.mk.sm{width:auto;min-width:22px;height:16px;line-height:16px;font-size:8.5px;padding:0 4px;margin-right:6px;box-shadow:none}.mk.sm.keputusan{min-width:12px;width:12px;height:12px;padding:0;margin:0 9px 0 3px}
 .mk.dokumen{background:#92D050;border-radius:3px 3px 10px 3px}
 .sop-sub{margin-top:18px}
 .sop-det{border:1px solid var(--line);border-radius:14px;margin-top:10px;background:var(--panel)}
@@ -432,6 +439,53 @@ table.sop td.pel.off{background:#7F7F7F}
 .sop-hidden[open]>summary{border-bottom:1px solid var(--line)}
 .sop-hidden>div{padding:14px 20px 20px}
 @media (max-width:1000px){.sop-id,.sop-grid{grid-template-columns:1fr}.sop-id-l{border-right:0;border-bottom:2px solid #000}.sop-grid>div:nth-child(odd){border-right:0}}
+/* mode tampilan SOP: daftar langkah (ponsel) dan tabel asli */
+.sop-mode{display:none;gap:6px;justify-content:center;padding:0 12px 10px}
+.sop-mode button{border:1px solid var(--line);background:var(--panel-2);border-radius:999px;padding:6px 12px;font-size:13px;font-weight:700;cursor:pointer}
+.sop-mode button[aria-pressed="true"]{background:var(--maroon);border-color:var(--maroon);color:#fff}
+.sop-list{display:none;list-style:none;margin:0;padding:0 10px 10px;font-family:Arial,Helvetica,sans-serif;font-size:13.5px;line-height:1.45}
+.sop-list li{border:1px solid #000;border-radius:0;padding:10px 12px;margin-top:-1px;background:#fff;position:relative}
+.sop-list li+li::before{content:"";position:absolute;left:24px;top:-12px;width:0;height:11px;border-left:1.6px solid #111}
+.sop-list li+li::after{content:"";position:absolute;left:20px;top:-3px;border:5px solid transparent;border-top:6px solid #111}
+.sop-list .lh{display:flex;gap:10px;align-items:flex-start}
+.sop-list .ln{flex:none;width:28px;height:28px;border-radius:8px;background:#D9D9D9;border:1px solid #000;display:grid;place-items:center;font-weight:700}
+.sop-list .lk{font-weight:700;padding-top:3px}
+.sop-list .lw{display:flex;flex-wrap:wrap;align-items:center;gap:4px 8px;margin:8px 0 6px 38px;font-size:12.5px;font-weight:700}
+.sop-list .who{display:inline-flex;align-items:center}
+.sop-list .to{color:var(--muted)}
+.sop-list dl{display:grid;grid-template-columns:96px 1fr;gap:4px 10px;margin:0 0 0 38px}
+.sop-list dt{color:#555;font-size:12px;padding-top:1px}
+.sop-list dd{margin:0}
+@media (max-width:760px){
+  .sop-mode{display:flex}
+  .sop-wrap .sop-scroll{display:none}.sop-wrap .sop-list{display:block}
+  .sop-wrap.as-table .sop-scroll{display:block}.sop-wrap.as-table .sop-list{display:none}
+  .sop-card{padding:12px}
+  .sop-det>.sop-wrap,.sop-det>.sop-id{margin:8px}.sop-det>.sop-grid{margin:0 8px}
+  .sop-id{font-size:12px}.sop-grid{font-size:12.5px}
+  .sop-meta th{width:42%}
+  .sop-det>summary{font-size:14.5px;padding:10px 12px}
+  .sop-hidden>summary{font-size:14.5px;padding:12px 14px}
+  .sop-hidden>div{padding:10px 10px 14px}
+  .sop-list dl{grid-template-columns:1fr;margin-left:0}.sop-list dt{margin-top:4px}
+  .sop-list .lw{margin-left:0}
+}
+@media (max-width:560px){
+  .foot .dots{display:none}
+  .foot .nb .t{display:none}
+  .foot .in{justify-content:flex-end}
+  .foot .nb{flex:none}
+  .top .org small{font-size:9.5px;letter-spacing:.06em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .top .org{min-width:0}
+  .lane .lh{min-height:0}
+  .tiles{grid-template-columns:minmax(0,1fr)}
+  .tile{min-height:0;padding:14px 16px}
+  .tile.wide{flex-direction:row;align-items:center}
+  .tile.wide .mini{flex:0 0 96px;height:48px}
+  .ring{width:60px;height:60px}
+  .dots9 i{width:16px;height:16px}
+  .tn b{font-size:40px}
+}
 </style>
 </head>
 <body>
@@ -488,28 +542,28 @@ table.sop td.pel.off{background:#7F7F7F}
   <!-- 3 PENUNJUKAN KURATOR -->
   <section class="scene" data-scene="2">
     <div class="eyebrow">Penunjukan Kurator · PN Niaga Medan 2025 dan 2026</div>
-    <h1>Dari 16 putusan pailit, BHP diangkat <mark>pada perkara Frans Winner.</mark></h1>
+    <h1>Penunjukan kurator di <mark>Pengadilan Niaga Medan.</mark></h1>
     <p class="lead">Seluruh perkara pailit dan PKPU di Pengadilan Niaga Medan 2025 dan 2026 (sampai 2 Oktober 2026). Sumber: SIPP PN Medan.</p>
     <div class="grid g2">
       <div class="card"><div class="eyebrow" style="margin-bottom:4px">Permohonan dan putusan</div><h2 class="h2">2025 dibanding 2026</h2>
         <svg class="chart" id="cCmp" viewBox="0 0 800 360" role="img" aria-label="Perbandingan 2025 dan 2026"></svg>
         <div class="legend"><span><i style="background:var(--cream-2)"></i>2025</span><span><i style="background:var(--maroon)"></i>2026 sampai 2 Oktober</span></div></div>
-      <div class="card"><div class="eyebrow" style="margin-bottom:4px">Nasib permohonan yang meminta BHP</div><h2 class="h2">10 permohonan, 1 dikabulkan</h2>
-        <svg class="chart" id="cDonut" viewBox="0 0 320 260" role="img" aria-label="Hasil permohonan yang meminta BHP"></svg>
+      <div class="card"><div class="eyebrow" style="margin-bottom:4px">Permohonan yang menunjuk BHP</div><h2 class="h2">10 permohonan, 1 dikabulkan</h2>
+        <svg class="chart" id="cDonut" viewBox="0 0 320 260" role="img" aria-label="Hasil permohonan yang menunjuk BHP"></svg>
         <div class="legend" id="lgDonut"></div><p class="hint">Pilih bagian lingkaran untuk menyaring daftar di bawah.</p></div>
     </div>
     <div class="card" style="margin-top:18px">
-      <div class="chips"><button class="chip" data-tab="v" aria-pressed="true">16 putusan pailit</button><button class="chip" data-tab="r" aria-pressed="false">10 permohonan meminta BHP</button><span style="flex:1"></span><input type="search" id="q" placeholder="Cari debitor, pemohon, atau kurator" aria-label="Cari" class="chip" style="min-width:260px;font-weight:600"></div>
+      <div class="chips"><button class="chip" data-tab="v" aria-pressed="true">16 putusan pailit</button><button class="chip" data-tab="r" aria-pressed="false">10 permohonan menunjuk BHP</button><span style="flex:1"></span><input type="search" id="q" placeholder="Cari debitor, pemohon, atau kurator" aria-label="Cari" class="chip" style="min-width:260px;font-weight:600"></div>
       <div class="scroll"><table id="tbl" class="dt"></table></div>
     </div>
-    <div class="take"><span class="k">Intinya</span>BHP diangkat hanya bila diminta pemohon. Delapan permohonan yang meminta BHP dicabut atau ditolak, jadi penugasan BHP masih sepenuhnya bergantung pada pilihan pemohon.</div>
+    <div class="take"><span class="k">Intinya</span>Kurator diangkat pengadilan berdasarkan usulan pemohon, sehingga penunjukan BHP bergantung pada pilihan pemohon.</div>
   </section>
 
   <!-- 4 SOP -->
   <section class="scene" data-scene="3">
     <div class="eyebrow">SOP Kepailitan BHP Medan · SK Kepala BHP Medan Nomor W.2.AHU.AHU.1-OT.02.02-594, 30 Maret 2026</div>
     <h1>Lampiran 5: <mark>SOP Kepailitan dan PKPU.</mark></h1>
-    <p class="lead">Disalin apa adanya dari dokumen SOP: halaman identitas, tabel 21 tahap dengan kolom pelaksana dan mutu baku, serta lima SOP mikro. Geser tabel ke samping bila layar sempit.</p>
+    <p class="lead">Disalin apa adanya dari dokumen SOP: halaman identitas, tabel 21 tahap dengan kolom pelaksana dan mutu baku, serta lima SOP mikro. Di layar ponsel, tabel tampil sebagai daftar langkah; pilih "Tabel asli" untuk melihat bentuk tabelnya.</p>
     <div class="card sop-card" id="sopMain"></div>
     <details class="card sop-hidden">
       <summary><span class="no">+</span><span><b>Lampiran 1 sampai 4</b> · SOPAP Direktorat Jenderal AHU: Permohonan Kesediaan BHP Menjadi Kurator; Pencatatan Harta Pailit; Pengumuman Kepailitan, Rapat Kreditor Pertama, Batas Waktu Pengajuan Tagihan, dan Rapat Pencocokan Piutang; Verifikasi Pengajuan Tagihan</span></summary>
@@ -530,7 +584,7 @@ table.sop td.pel.off{background:#7F7F7F}
   <section class="scene" data-scene="4">
     <div class="eyebrow">Pembagian Peran</div>
     <h1>BHP dan kurator perseorangan: <mark>siapa mengerjakan apa.</mark></h1>
-    <p class="lead">Dalam kepailitan, BHP berkedudukan sebagai kurator sebagaimana kurator perseorangan yang ditunjuk pengadilan. Yang dipisahkan adalah dasar hukum, pelaksanaan, dan pertanggungjawabannya, bukan lembaganya.</p>
+    <p class="lead">Dalam perkara kepailitan, BHP bertugas sebagai kurator, sama seperti kurator perseorangan yang ditunjuk pengadilan. Tugas kurator ini dipisahkan dari tugas keperdataan BHP lainnya dalam hal dasar hukum, pelaksanaan, dan pertanggungjawaban, tetapi tetap dijalankan oleh lembaga yang sama.</p>
     <div class="roles">
       <div class="role bhp"><h3>BHP</h3><div class="s">Kurator negara</div>
         <ul><li>Berjalan sesuai SOP Kepailitan: putusan pengadilan › tim Kurator Keperdataan › pengurusan dan pemberesan di bawah Hakim Pengawas</li><li>Tim melapor per triwulan</li><li>Imbalan jasa disetor ke kas negara sebagai PNBP</li><li>Di luar kepailitan, BHP berkedudukan sebagai wali pengawas, pendamping pengawas, dan tugas lain menurut KUHPerdata, dengan dasar dan pertanggungjawaban yang terpisah</li></ul></div>
@@ -556,8 +610,8 @@ table.sop td.pel.off{background:#7F7F7F}
 <div class="foot"><div class="in">
   <span class="src">Sumber: Buku Register Kepailitan dan laporan pengurusan BHP Medan; SIPP PN Medan per 2 Oktober 2026; Masukan dan Telaah BHP Medan, 3 Oktober 2026.</span>
   <div class="dots" id="dots"></div>
-  <a class="nb" href="BHP-Medan-Paparan-Klaster-1.pptx" download style="text-decoration:none">Unduh PPTX</a>
-<button class="nb" id="prev">‹ Sebelumnya</button>
+  <a class="nb" href="BHP-Medan-Paparan-Klaster-1.pptx" download style="text-decoration:none" aria-label="Unduh PPTX"><span class="t">Unduh </span>PPTX</a>
+<button class="nb" id="prev" aria-label="Sebelumnya">‹<span class="t"> Sebelumnya</span></button>
   <button class="nb primary" id="next">Berikutnya ›</button>
 </div></div>
 <div id="tip" role="status"></div>
@@ -637,12 +691,12 @@ table.sop td.pel.off{background:#7F7F7F}
     ["7/Pdt.Sus-Pailit/2025","Adi dan kawan","PT Agro Rubberindo Industry","Ditolak",""],
     ["9/Pdt.Sus-Pailit/2025","Salim Hadi Saputra dan kawan","Frans Winner dan PT Cahaya Berjaya Sejahtera","Dicabut","13 Oktober 2025; diajukan kembali sebagai 12/Pdt.Sus-Pailit/2025"],
     ["12/Pdt.Sus-Pailit/2025","Salim Hadi Saputra dan kawan","Frans Winner","Dikabulkan","11 Desember 2025; BHP Medan diangkat"],
-    ["22/Pdt.Sus-PKPU/2026","Susi Angelica Br Situmeang","Asman","Ditolak","8 Juni 2026; meminta BHP sebagai pengurus dan kurator"],
+    ["22/Pdt.Sus-PKPU/2026","Susi Angelica Br Situmeang","Asman","Ditolak","8 Juni 2026; menunjuk BHP sebagai pengurus dan kurator"],
     ["3/Pdt.Sus-Pailit/2026","Jamilah dan kawan-kawan","PT Sinar Mulia Muara Sentosa","Dicabut","6 Juli 2026"],
     ["5/Pdt.Sus-Pailit/2026","Taufik Ritonga dan 8 pemohon lain","PT Sinar Bandar Indotama","Ditolak","28 Agustus 2026"],
     ["4/Pdt.Sus-Pailit/2026","PT Waskita Karya (Persero) Tbk","PT Makmur Permata Putra","Masih diperiksa","Masih dalam persidangan"]
   ];
-  var cmpData=[["Permohonan pailit teregister",14,6],["Permohonan PKPU teregister",51,38],["Putusan pailit (termasuk PKPU berakhir pailit)",9,7],["Kurator perseorangan diangkat",7,7],["BHP Medan diangkat",1,0],["Permohonan meminta BHP dalam petitum",6,4]];
+  var cmpData=[["Permohonan pailit teregister",14,6],["Permohonan PKPU teregister",51,38],["Putusan pailit (termasuk PKPU berakhir pailit)",9,7],["Kurator perseorangan diangkat",7,7],["BHP Medan diangkat",1,0],["Permohonan menunjuk BHP",6,4]];
   function drawCmp(){var svg=document.getElementById("cCmp");svg.innerHTML="";var narrow=svg.parentElement.clientWidth<620,W=narrow?440:800,L=narrow?10:330,T=10,rowH=narrow?74:54,max=52,R=70,sx=(W-L-R)/max;
     cmpData.forEach(function(d,i){var y=T+i*rowH;var g=el("g",{},svg);
       if(narrow){txt(g,{x:L,y:y+14,"font-size":13,"font-weight":700,fill:C.ink},d[0]);y+=20}else txt(g,{x:L-12,y:y+rowH/2+2,"text-anchor":"end","font-size":14,"font-weight":600,fill:C.ink},d[0]);
@@ -721,7 +775,7 @@ table.sop td.pel.off{background:#7F7F7F}
         {k:"Menyiapkan berkas pencatatan harta pailit yang bergerak dan harta tidak bergerak yang telah mendisposikan",p:[0],m:"mulai",l:"Berita Acara Pencatatan harta pailit dan disposisi pembuatan nota dinas surat permohonan pemblokiran rekening dan pemblokiran harta tidak bergerak",w:"30 menit",o:"dokumen dan disposisi",t:""},
         {k:"Menyiapkan bahan konsep nota dinas surat permohonan pemblokiran rekening dan pemblokiran harta tidak bergerak",p:[1],l:"dokumen dan disposisi",w:"1 Jam",o:"dokumen dan disposisi",t:""},
         {k:"Mengetik konsep nota dinas surat permohonan pemblokiran rekening dan pemblokiran harta tidak bergerak",p:[1],l:"dokumen dan disposisi",w:"1 Jam",o:"dokumen dan disposisi",t:""},
-        {k:"Mengoreksi konsep nota dinas dan konsep surat permohonan pemblokiran rekening pada Bank dan pemblokiran harta tidak bergerak",p:[1],m:"keputusan",l:"dokumen dan disposisi",w:"30 menit",o:"dokumen dan disposisi",t:""},
+        {back:1,k:"Mengoreksi konsep nota dinas dan konsep surat permohonan pemblokiran rekening pada Bank dan pemblokiran harta tidak bergerak",p:[1],m:"keputusan",l:"dokumen dan disposisi",w:"30 menit",o:"dokumen dan disposisi",t:""},
         {k:"Menandatangani konsep surat permohonan pemblokiran rekening pada Bank dan pemblokiran harta tidak bergerak",p:[1],l:"dokumen dan disposisi",w:"1 hari",o:"dokumen dan disposisi",t:""},
         {k:"Menyiapkan ekspedisi pengiriman surat permohonan pemblokiran rekening dan pemblokiran harta tidak bergerak untuk penanganan lebih lanjut",p:[1],l:"dokumen dan disposisi",w:"5 Hari",o:"dokumen dan disposisi",t:""},
         {k:"Menyiapkan ekspedisi pengiriman surat permohonan pemblokiran rekening dan pemblokiran harta tidak bergerak untuk penanganan lebih lanjut",p:[0],m:"selesai",l:"arsip surat permohonan pemblokiran rekening dan pemblokiran harta tidak bergerak yang telah diperiksa kembali",w:"2 Hari",o:"arsip surat permohonan pemblokiran rekening dan pemblokiran harta tidak bergerak yang telah diperiksa kembali",t:"terkait dengan SOP penanganan surat keluar di sekretariat"}
@@ -730,7 +784,7 @@ table.sop td.pel.off{background:#7F7F7F}
         {k:"Menyiapkan berkas konsep surat undangan rapat kreditur dan debitur yang telah di disposisi",p:[0],m:"mulai",l:"dokumen dan disposisi",w:"1 Jam",o:"dokumen dan disposisi",t:""},
         {k:"Menyiapkan bahan konsep surat undangan rapat kreditur dan debitur",p:[1],l:"dokumen dan disposisi",w:"1 Jam",o:"dokumen dan disposisi",t:""},
         {k:"Mengetik konsep surat undangan rapat kreditur dan debitur",p:[1],l:"dokumen dan disposisi",w:"2 Jam",o:"dokumen dan disposisi",t:""},
-        {k:"Mengoreksi konsep surat undangan rapat kreditur dan debitur ditembuskan ke Hakim Pengawas",p:[1],m:"keputusan",l:"dokumen dan disposisi",w:"1 Jam",o:"dokumen dan disposisi",t:""},
+        {back:1,k:"Mengoreksi konsep surat undangan rapat kreditur dan debitur ditembuskan ke Hakim Pengawas",p:[1],m:"keputusan",l:"dokumen dan disposisi",w:"1 Jam",o:"dokumen dan disposisi",t:""},
         {k:"Menandatangani surat undangan rapat kreditur dan debitur kemudian ditembuskan ke Hakim Pengawas",p:[1],l:"dokumen dan disposisi",w:"30 menit",o:"dokumen dan disposisi",t:""},
         {k:"Menyiapkan ekspedisi pengiriman surat undangan rapat kreditur kepada para kreditur dan debitur kemudian ditembuskan ke hakim pengawas",p:[1],l:"dokumen dan disposisi",w:"30 menit",o:"dokumen dan disposisi",t:""},
         {k:"menerima hasil pelaksanaan pekerjaan dari JFKK berupa bukti surat ekspedisi pengiriman surat",p:[0],m:"selesai",l:"arsip dokumen dan disposisi",w:"2 hari",o:"arsip dokumen dan disposisi",t:""}
@@ -774,10 +828,10 @@ table.sop td.pel.off{background:#7F7F7F}
      kual:KUAL_A,kait:["SOPAP Kepailitan dan PKPU"],alat:["Komputer dan kelengkapannya"],perin:"Apabila Standar Operasional Prosedur Utama tidak dilaksanakan maka proses dalam Standar Operasional Prosedur Mikro akan terhambat.",catat:"Disimpan sebagai data register elektronik dan manual",
      tabel:{judul:"STANDAR OPERASIONAL PROSEDUR ADMINISTRASI PEMERINTAH<br>PERMOHONAN KESEDIAAN BHP MENJADI KURATOR",cols:["Pemohon","Verifikator","Kepala"],rows:[
       {k:"Mengakses laman ahu.go.id, pilih \"BHP\", login akun atau membuat akun jika belum memiliki akun",p:[0],m:"mulai",l:"Laman login atau create account",w:"Real Time",o:"Akun untuk Pemohon",t:"Pemohon adalah Kuasa Hukum dari Debitor atau Kreditor atau dalam hal Debitor adalah sebagaimana dimaksud Pasal 2 ayat (3), (4) dan (5) UU Kepailitan dan PKPU maka Pemohon adalah Bank Indonesia atau OJK atau Menteri Keuangan"},
-      {k:"Memilih menu \"KEPAILITAN\" kemudian pilih \"PERMOHONAN BHP SEBAGAI KURATOR\"",p:[0],l:"Akun untuk Pemohon",w:"Real Time",o:"Laman isian formulir permohonan",t:""},
-      {k:"Mengisi formulir data permohonan, mengunggah dokumen persyaratan dan pernyataan pertanggungjawaban",p:[0],l:"Dokumen persyaratan:<br>1. Pemohon Kuasa Hukum Debitor<br>&nbsp;&nbsp;a. Perorangan :<br>&nbsp;&nbsp;&nbsp;&nbsp;- Surat Kuasa Khusus*<br>&nbsp;&nbsp;&nbsp;&nbsp;- KTP Pemberi dan Penerima Kuasa*<br>&nbsp;&nbsp;&nbsp;&nbsp;- Kartu Keluarga Debitor*<br>&nbsp;&nbsp;&nbsp;&nbsp;- Mutasi rekening Debitor 3 bulan terakhir*<br>&nbsp;&nbsp;&nbsp;&nbsp;- Daftar harta milik Debitor meliputi aset bergerak dan tidak bergerak*<br>&nbsp;&nbsp;&nbsp;&nbsp;- Daftar utang Debitor kepada pihak lain yang salah satu di antaranya telah jatuh waktu dan belum dapat dibayarkan*<br>&nbsp;&nbsp;b. Badan Usaha (Badan Hukum atau Bukan Badan Hukum) :<br>&nbsp;&nbsp;&nbsp;&nbsp;- Surat Kuasa Khusus*<br>&nbsp;&nbsp;&nbsp;&nbsp;- KTP Pemberi dan Penerima Kuasa*<br>&nbsp;&nbsp;&nbsp;&nbsp;- Akta Pendirian*<br>&nbsp;&nbsp;&nbsp;&nbsp;- Dokumen pengesahan (Badan Hukum)*<br>&nbsp;&nbsp;&nbsp;&nbsp;- Anggaran Dasar berikut perubahannya dan/atau Anggaran Rumah Tangga*<br>&nbsp;&nbsp;&nbsp;&nbsp;- Dokumen yang memuat daftar susunan nama organ atau perangkat badan usaha*<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&gt; Perseroan Terbatas : Direksi, Komisaris, Pemegang Saham*<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&gt; Yayasan : Pembina, Pengurus dan Pengawas*<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&gt; Koperasi : Pengurus dan Pengawas*<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&gt; CV : Pesero / Sekutu Aktif / Komplementer dan Pesero / Sekutu Pasif / Komanditer*<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&gt; Firma : Seluruh Pesero*<br>&nbsp;&nbsp;&nbsp;&nbsp;- Mutasi rekening 3 bulan terakhir*<br>&nbsp;&nbsp;&nbsp;&nbsp;- Laporan keuangan terakhir yang telah diaudit*<br>&nbsp;&nbsp;&nbsp;&nbsp;- Daftar harta yang meliputi aset bergerak dan aset tidak bergerak*<br>&nbsp;&nbsp;&nbsp;&nbsp;- Daftar utang kepada pihak lain yang salah satu di antaranya telah jatuh waktu dan belum dapat dibayarkan*<br>2. Pemohon Kuasa Hukum Kreditor<br>&nbsp;&nbsp;a. Perorangan :<br>&nbsp;&nbsp;&nbsp;&nbsp;- Surat Kuasa Khusus*<br>&nbsp;&nbsp;&nbsp;&nbsp;- KTP Pemberi dan Penerima Kuasa*<br>&nbsp;&nbsp;&nbsp;&nbsp;- Nama dan alamat Debitor*<br>&nbsp;&nbsp;&nbsp;&nbsp;- Bukti tagihan / piutang kepada Debitor yang sudah jatuh waktu dan dapat ditagih*<br>&nbsp;&nbsp;&nbsp;&nbsp;- Bukti adanya Kreditor lain yang dimiliki oleh Debitor<br>&nbsp;&nbsp;&nbsp;&nbsp;- Daftar harta yang diduga merupakan milik Debitor meliputi aset bergerak dan aset tidak bergerak<br>&nbsp;&nbsp;b. Badan Usaha (Badan Hukum atau Bukan Badan Hukum) :<br>&nbsp;&nbsp;&nbsp;&nbsp;- Surat Kuasa Khusus*<br>&nbsp;&nbsp;&nbsp;&nbsp;- KTP Pemberi dan Penerima Kuasa*<br>&nbsp;&nbsp;&nbsp;&nbsp;- Akta Pendirian*<br>&nbsp;&nbsp;&nbsp;&nbsp;- Dokumen pengesahan (Badan Hukum)*<br>&nbsp;&nbsp;&nbsp;&nbsp;- Anggaran Dasar berikut perubahannya dan/atau Anggaran Rumah Tangga*<br>&nbsp;&nbsp;&nbsp;&nbsp;- Dokumen yang memuat daftar susunan nama organ atau perangkat badan usaha*<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&gt; Perseroan Terbatas : Direksi, Komisaris, Pemegang Saham*<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&gt; Yayasan : Pembina, Pengurus dan Pengawas*<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&gt; Koperasi : Pengurus dan Pengawas*<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&gt; CV : Pesero / Sekutu Aktif / Komplementer dan Pesero / Sekutu Pasif / Komanditer*<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&gt; Firma : Seluruh Pesero*<br>&nbsp;&nbsp;&nbsp;&nbsp;- Nama dan alamat Debitor*<br>&nbsp;&nbsp;&nbsp;&nbsp;- Bukti tagihan / piutang kepada* Debitor yang sudah jatuh waktu dan dapat ditagih<br>&nbsp;&nbsp;&nbsp;&nbsp;- Bukti adanya Kreditor lain yang dimiliki oleh Debitor<br>&nbsp;&nbsp;&nbsp;&nbsp;- Daftar harta yang diduga merupakan milik Debitor meliputi aset bergerak dan aset tidak bergerak",w:"Real Time",o:"Permohonan Kesediaan BHP sebagai Kurator yang tersimpan secara digital dalam sistem",t:"*wajib dilampirkan"},
-      {k:"Memeriksa kelengkapan dokumen persyaratan permohonan kesediaan BHP menjadi Kurator",p:[1],m:"keputusan",l:"Permohonan Kesediaan BHP sebagai Kurator yang tersimpan secara digital dalam sistem",w:"1 Hari",o:"Hasil pemeriksaan kelengkapan Dokumen Permohonan Kesediaan BHP sebagai Kurator yang tersimpan secara digital dalam sistem",t:"Jika tidak lengkap, akan ada notifikasi kepada Pemohon untuk melengkapi, proses kembali ke Pemohon"},
-      {k:"Menyusun analisa kelayakan pemberian kesediaan menjadi Kurator",p:[1],l:"Hasil pemeriksaan kelengkapan Dokumen Permohonan Kesediaan BHP sebagai Kurator yang tersimpan secara digital dalam sistem",w:"1 Hari",o:"Hasil analisa kelayakan pemberian kesediaan menjadi Kurator",t:"Jika hasil analisa dinyatakan layak maka muncul jawaban bersedia menjadi Kurator<br>Jika hasil analisa dinyatakan tidak layak maka muncul jawaban belum bersedia menjadi Kurator"},
+      {ms:["prosesg"],k:"Memilih menu \"KEPAILITAN\" kemudian pilih \"PERMOHONAN BHP SEBAGAI KURATOR\"",p:[0],l:"Akun untuk Pemohon",w:"Real Time",o:"Laman isian formulir permohonan",t:""},
+      {ms:["prosesg"],k:"Mengisi formulir data permohonan, mengunggah dokumen persyaratan dan pernyataan pertanggungjawaban",p:[0],l:"Dokumen persyaratan:<br>1. Pemohon Kuasa Hukum Debitor<br>&nbsp;&nbsp;a. Perorangan :<br>&nbsp;&nbsp;&nbsp;&nbsp;- Surat Kuasa Khusus*<br>&nbsp;&nbsp;&nbsp;&nbsp;- KTP Pemberi dan Penerima Kuasa*<br>&nbsp;&nbsp;&nbsp;&nbsp;- Kartu Keluarga Debitor*<br>&nbsp;&nbsp;&nbsp;&nbsp;- Mutasi rekening Debitor 3 bulan terakhir*<br>&nbsp;&nbsp;&nbsp;&nbsp;- Daftar harta milik Debitor meliputi aset bergerak dan tidak bergerak*<br>&nbsp;&nbsp;&nbsp;&nbsp;- Daftar utang Debitor kepada pihak lain yang salah satu di antaranya telah jatuh waktu dan belum dapat dibayarkan*<br>&nbsp;&nbsp;b. Badan Usaha (Badan Hukum atau Bukan Badan Hukum) :<br>&nbsp;&nbsp;&nbsp;&nbsp;- Surat Kuasa Khusus*<br>&nbsp;&nbsp;&nbsp;&nbsp;- KTP Pemberi dan Penerima Kuasa*<br>&nbsp;&nbsp;&nbsp;&nbsp;- Akta Pendirian*<br>&nbsp;&nbsp;&nbsp;&nbsp;- Dokumen pengesahan (Badan Hukum)*<br>&nbsp;&nbsp;&nbsp;&nbsp;- Anggaran Dasar berikut perubahannya dan/atau Anggaran Rumah Tangga*<br>&nbsp;&nbsp;&nbsp;&nbsp;- Dokumen yang memuat daftar susunan nama organ atau perangkat badan usaha*<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&gt; Perseroan Terbatas : Direksi, Komisaris, Pemegang Saham*<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&gt; Yayasan : Pembina, Pengurus dan Pengawas*<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&gt; Koperasi : Pengurus dan Pengawas*<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&gt; CV : Pesero / Sekutu Aktif / Komplementer dan Pesero / Sekutu Pasif / Komanditer*<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&gt; Firma : Seluruh Pesero*<br>&nbsp;&nbsp;&nbsp;&nbsp;- Mutasi rekening 3 bulan terakhir*<br>&nbsp;&nbsp;&nbsp;&nbsp;- Laporan keuangan terakhir yang telah diaudit*<br>&nbsp;&nbsp;&nbsp;&nbsp;- Daftar harta yang meliputi aset bergerak dan aset tidak bergerak*<br>&nbsp;&nbsp;&nbsp;&nbsp;- Daftar utang kepada pihak lain yang salah satu di antaranya telah jatuh waktu dan belum dapat dibayarkan*<br>2. Pemohon Kuasa Hukum Kreditor<br>&nbsp;&nbsp;a. Perorangan :<br>&nbsp;&nbsp;&nbsp;&nbsp;- Surat Kuasa Khusus*<br>&nbsp;&nbsp;&nbsp;&nbsp;- KTP Pemberi dan Penerima Kuasa*<br>&nbsp;&nbsp;&nbsp;&nbsp;- Nama dan alamat Debitor*<br>&nbsp;&nbsp;&nbsp;&nbsp;- Bukti tagihan / piutang kepada Debitor yang sudah jatuh waktu dan dapat ditagih*<br>&nbsp;&nbsp;&nbsp;&nbsp;- Bukti adanya Kreditor lain yang dimiliki oleh Debitor<br>&nbsp;&nbsp;&nbsp;&nbsp;- Daftar harta yang diduga merupakan milik Debitor meliputi aset bergerak dan aset tidak bergerak<br>&nbsp;&nbsp;b. Badan Usaha (Badan Hukum atau Bukan Badan Hukum) :<br>&nbsp;&nbsp;&nbsp;&nbsp;- Surat Kuasa Khusus*<br>&nbsp;&nbsp;&nbsp;&nbsp;- KTP Pemberi dan Penerima Kuasa*<br>&nbsp;&nbsp;&nbsp;&nbsp;- Akta Pendirian*<br>&nbsp;&nbsp;&nbsp;&nbsp;- Dokumen pengesahan (Badan Hukum)*<br>&nbsp;&nbsp;&nbsp;&nbsp;- Anggaran Dasar berikut perubahannya dan/atau Anggaran Rumah Tangga*<br>&nbsp;&nbsp;&nbsp;&nbsp;- Dokumen yang memuat daftar susunan nama organ atau perangkat badan usaha*<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&gt; Perseroan Terbatas : Direksi, Komisaris, Pemegang Saham*<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&gt; Yayasan : Pembina, Pengurus dan Pengawas*<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&gt; Koperasi : Pengurus dan Pengawas*<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&gt; CV : Pesero / Sekutu Aktif / Komplementer dan Pesero / Sekutu Pasif / Komanditer*<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&gt; Firma : Seluruh Pesero*<br>&nbsp;&nbsp;&nbsp;&nbsp;- Nama dan alamat Debitor*<br>&nbsp;&nbsp;&nbsp;&nbsp;- Bukti tagihan / piutang kepada* Debitor yang sudah jatuh waktu dan dapat ditagih<br>&nbsp;&nbsp;&nbsp;&nbsp;- Bukti adanya Kreditor lain yang dimiliki oleh Debitor<br>&nbsp;&nbsp;&nbsp;&nbsp;- Daftar harta yang diduga merupakan milik Debitor meliputi aset bergerak dan aset tidak bergerak",w:"Real Time",o:"Permohonan Kesediaan BHP sebagai Kurator yang tersimpan secara digital dalam sistem",t:"*wajib dilampirkan"},
+      {back:1,k:"Memeriksa kelengkapan dokumen persyaratan permohonan kesediaan BHP menjadi Kurator",p:[1],m:"keputusan",l:"Permohonan Kesediaan BHP sebagai Kurator yang tersimpan secara digital dalam sistem",w:"1 Hari",o:"Hasil pemeriksaan kelengkapan Dokumen Permohonan Kesediaan BHP sebagai Kurator yang tersimpan secara digital dalam sistem",t:"Jika tidak lengkap, akan ada notifikasi kepada Pemohon untuk melengkapi, proses kembali ke Pemohon"},
+      {ms:["prosesg"],k:"Menyusun analisa kelayakan pemberian kesediaan menjadi Kurator",p:[1],l:"Hasil pemeriksaan kelengkapan Dokumen Permohonan Kesediaan BHP sebagai Kurator yang tersimpan secara digital dalam sistem",w:"1 Hari",o:"Hasil analisa kelayakan pemberian kesediaan menjadi Kurator",t:"Jika hasil analisa dinyatakan layak maka muncul jawaban bersedia menjadi Kurator<br>Jika hasil analisa dinyatakan tidak layak maka muncul jawaban belum bersedia menjadi Kurator"},
       {k:"Menentukan kelayakan pemberian kesediaan menjadi Kurator",p:[2],m:"keputusan",l:"Hasil analisa kelayakan pemberian kesediaan menjadi Kurator",w:"1 Hari",o:"Surat jawaban permohonan kesediaan BHP menjadi Kurator",t:""},
       {k:"Akhir pelaksanaan permohonan",p:[0],m:"selesai",l:"Surat jawaban permohonan kesediaan BHP menjadi Kurator",w:"Real Time",o:"Surat jawaban permohonan kesediaan BHP menjadi Kurator diterima oleh Pemohon",t:""}
      ]}},
@@ -787,23 +841,23 @@ table.sop td.pel.off{background:#7F7F7F}
      tabel:{judul:"STANDAR OPERASIONAL PROSEDUR ADMINISTRASI PEMERINTAH<br>PENCATATAN HARTA PAILIT",cols:["Kurator Keperdataan","Kepala","Hakim Pengawas","Panitera"],rows:[
       {k:"Melakukan penelusuran dan menerima informasi harta pailit",p:[0],m:"mulai",l:"Informasi harta pailit dapat berupa namun tidak terbatas pada:<br>a. Informasi harta milik Debitor yang disampaikan dalam Putusan Pailit<br>b. Informasi harta Debitor yang disampaikan oleh Debitor / Kreditor, seperti Laporan keuangan, mutasi rekening atau dokumen lainnya yang menunjukkan harta tersebut milik Debitor<br>c. Informasi harta Debitor yang disampaikan sebagai jawaban dari permintaan informasi dari BHP, antara lain dari :<br>&nbsp;&nbsp;- OJK terkait rekening milik Debitor<br>&nbsp;&nbsp;- Kantor Pertanahan terkait tanah yang tercatat dimiliki oleh Debitor<br>&nbsp;&nbsp;- Kepolisian/SAMSAT terkait kendaraan yang tercatat dimiliki oleh Debitor<br>d. Informasi harta Debitor yang diperoleh sebagai tindak lanjut dari penelusuran aset huruf c diatas atau sumber lainnya.<br>e. Putusan gugatan lain-lain.",w:"1 Hari",o:"Informasi harta pailit",t:""},
       {k:"Menyusun konsep daftar pencatatan harta pailit di bawah tangan",p:[0],l:"Informasi harta pailit",w:"1 Hari",o:"Konsep daftar pencatatan harta pailit di bawah tangan",t:""},
-      {k:"Persetujuan daftar pencatatan harta pailit oleh Kurator",p:[1],m:"keputusan",l:"Konsep daftar pencatatan harta pailit di bawah tangan",w:"1 Hari",o:"Daftar pencatatan harta pailit ditandatangani oleh Kurator",t:""},
-      {k:"Persetujuan daftar pencatatan harta pailit oleh Hakim Pengawas",p:[2],m:"keputusan",l:"Daftar pencatatan harta pailit ditandatangani oleh Kurator",w:"1 Hari",o:"Daftar pencatatan harta pailit ditandatangani oleh Kurator dan Hakim Pengawas",t:""},
-      {k:"Daftar Pencatatan Harta dapat dilihat oleh publik",p:[3,0],m:"selesai",l:"Daftar pencatatan harta pailit ditandatangani oleh Kurator dan Hakim Pengawas",w:"1 Hari",o:"Daftar Pencatatan Harta Pailit yang diletakkan di Kepaniteraan Pengadilan dan Sistem Informasi Kepailitan Kurator",t:""}
+      {back:1,k:"Persetujuan daftar pencatatan harta pailit oleh Kurator",p:[1],m:"keputusan",l:"Konsep daftar pencatatan harta pailit di bawah tangan",w:"1 Hari",o:"Daftar pencatatan harta pailit ditandatangani oleh Kurator",t:""},
+      {back:2,k:"Persetujuan daftar pencatatan harta pailit oleh Hakim Pengawas",p:[2],m:"keputusan",l:"Daftar pencatatan harta pailit ditandatangani oleh Kurator",w:"1 Hari",o:"Daftar pencatatan harta pailit ditandatangani oleh Kurator dan Hakim Pengawas",t:""},
+      {ms:["proses","selesai"],k:"Daftar Pencatatan Harta dapat dilihat oleh publik",p:[3,0],m:"selesai",l:"Daftar pencatatan harta pailit ditandatangani oleh Kurator dan Hakim Pengawas",w:"1 Hari",o:"Daftar Pencatatan Harta Pailit yang diletakkan di Kepaniteraan Pengadilan dan Sistem Informasi Kepailitan Kurator",t:""}
      ]}},
     {lamp:"Lampiran 3",judul:"Pengumuman Kepailitan, Rapat Kreditor Pertama, Batas Waktu Pengajuan Tagihan, dan Rapat Pencocokan Piutang",
      dasar:[[1,"Kitab Undang-Undang Hukum Perdata;"],[2,UU_NAKER+";"],[3,UU_KPKPU+";"],[4,"Undang-Undang No. 40 Tahun 2007 tentang Perseroan Terbatas yang telah diubah dengan Undang-undang Nomor 6 Tahun 2023 tentang Penetapan Peraturan Pemerintah Pengganti Undang-Undang Nomor 2 Tahun 2022 tentang Cipta Kerja menjadi Undang-Undang;"],[5,"Undang-Undang No. 16 Tahun 2009 tentang Penetapan Peraturan Pemerintah Pengganti Undang-Undang Nomor 5 Tahun 2008 tentang Perubahan Keempat atas Undang-Undang No 6 tahun 1983 tentang Ketentuan Umum dan Tata Cara Perpajakan Menjadi Undang-Undang yang terakhir diubah dengan Undang-undang Nomor 6 Tahun 2023 tentang Penetapan Peraturan Pemerintah Pengganti Undang-Undang Nomor 2 Tahun 2022 tentang Cipta Kerja menjadi Undang-Undang;"],[6,"Peraturan Presiden Nomor 155 Tahun 2024 tentang Kementerian Hukum;"],[7,PP45+"; dan"],[8,PERMEN7+"."]],
      kual:KUAL_A,kait:["SOPAP Kepailitan dan PKPU"],alat:["Komputer dan kelengkapannya"],perin:PERINGATAN_B,catat:"Disimpan sebagai data register elektronik dan manual",
      tabel:{judul:"STANDAR OPERASIONAL PROSEDUR ADMINISTRASI PEMERINTAH<br>PENGUMUMAN KEPAILITAN, RAPAT KREDITOR PERTAMA, BATAS WAKTU PENGAJUAN TAGIHAN, DAN RAPAT PENCOCOKAN PIUTANG",cols:["Panitera","Kepala","Kepala Seksi","Kurator Keperdataan","Hakim Pengawas","Media"],rows:[
-      {k:"Penyerahan Putusan Pailit",p:[0,1],m:"mulai",l:"1. Surat Pengantar/ Pemberitahuan Penyerahan Salinan Putusan Pailit<br>2. Salinan Putusan Pailit",w:"1 Hari",o:"Salinan Putusan Pailit diterima oleh BHP",t:""},
-      {k:"Pembentukan/ Penugasan tim Kurator",p:[1,2],l:"Salinan Putusan Pailit diterima oleh BHP",w:"1 Jam",o:"1. Surat Keputusan/ Penunjukkan pembentukan tim Kurator<br>2. Salinan Putusan pailit",t:""},
+      {ms:["mulai","dokumen"],k:"Penyerahan Putusan Pailit",p:[0,1],m:"mulai",l:"1. Surat Pengantar/ Pemberitahuan Penyerahan Salinan Putusan Pailit<br>2. Salinan Putusan Pailit",w:"1 Hari",o:"Salinan Putusan Pailit diterima oleh BHP",t:""},
+      {ms:["proses","dokumen"],k:"Pembentukan/ Penugasan tim Kurator",p:[1,2],l:"Salinan Putusan Pailit diterima oleh BHP",w:"1 Jam",o:"1. Surat Keputusan/ Penunjukkan pembentukan tim Kurator<br>2. Salinan Putusan pailit",t:""},
       {k:"Menyusun konsep permohonan penetapan penunjukan surat kabar; batas akhir pengajuan tagihan; batas akhir verifikasi tagihan; jadwal dan tempat pelaksanaan rapat kreditor pertama dan rapat pencocokan piutang",p:[3],l:"1. Surat Keputusan/ Penunjukkan pembentukan tim Kurator<br>2. Salinan Putusan pailit",w:"1 Jam",o:"Konsep permohonan penetapan penunjukan surat kabar; batas akhir pengajuan tagihan; batas akhir verifikasi tagihan; jadwal dan tempat pelaksanaan rapat kredior pertama dan rapat pencocokan piutang",t:""},
-      {k:"Persetujuan konsep permohonan penetapan penunjukan surat kabar; batas akhir pengajuan tagihan; batas akhir verifikasi tagihan; jadwal dan tempat pelaksanaan rapat kreditor pertama dan rapat pencocokan piutang",p:[1],m:"keputusan",l:"Konsep permohonan penetapan penunjukan surat kabar; batas akhir pengajuan tagihan; batas akhir verifikasi tagihan; jadwal dan tempat pelaksanaan rapat kredior pertama dan rapat pencocokan piutang",w:"1 Jam",o:"Surat permohonan penetapan penunjukan surat kabar; batas akhir pengajuan tagihan; batas akhir verifikasi tagihan; jadwal dan tempat pelaksanaan rapat kredior pertama dan rapat pencocokan piutang",t:""},
-      {k:"Penyerahan permohonan penetapan penunjukan surat kabar; batas akhir pengajuan tagihan; batas akhir verifikasi tagihan; jadwal dan tempat pelaksanaan rapat kreditor pertama dan rapat pencocokan piutang",p:[3,4],l:"Surat permohonan penetapan penunjukan surat kabar; batas akhir pengajuan tagihan; batas akhir verifikasi tagihan; jadwal dan tempat pelaksanaan rapat kredior pertama dan rapat pencocokan piutang",w:"1 Hari",o:"Konsep penetapan penunjukan surat kabar; batas akhir pengajuan tagihan; batas akhir verifikasi tagihan; jadwal dan tempat pelaksanaan rapat kredior pertama dan rapat pencocokan piutang",t:""},
+      {back:1,k:"Persetujuan konsep permohonan penetapan penunjukan surat kabar; batas akhir pengajuan tagihan; batas akhir verifikasi tagihan; jadwal dan tempat pelaksanaan rapat kreditor pertama dan rapat pencocokan piutang",p:[1],m:"keputusan",l:"Konsep permohonan penetapan penunjukan surat kabar; batas akhir pengajuan tagihan; batas akhir verifikasi tagihan; jadwal dan tempat pelaksanaan rapat kredior pertama dan rapat pencocokan piutang",w:"1 Jam",o:"Surat permohonan penetapan penunjukan surat kabar; batas akhir pengajuan tagihan; batas akhir verifikasi tagihan; jadwal dan tempat pelaksanaan rapat kredior pertama dan rapat pencocokan piutang",t:""},
+      {ms:["dokumen","proses"],k:"Penyerahan permohonan penetapan penunjukan surat kabar; batas akhir pengajuan tagihan; batas akhir verifikasi tagihan; jadwal dan tempat pelaksanaan rapat kreditor pertama dan rapat pencocokan piutang",p:[3,4],l:"Surat permohonan penetapan penunjukan surat kabar; batas akhir pengajuan tagihan; batas akhir verifikasi tagihan; jadwal dan tempat pelaksanaan rapat kredior pertama dan rapat pencocokan piutang",w:"1 Hari",o:"Konsep penetapan penunjukan surat kabar; batas akhir pengajuan tagihan; batas akhir verifikasi tagihan; jadwal dan tempat pelaksanaan rapat kredior pertama dan rapat pencocokan piutang",t:""},
       {k:"Menetapkan penunjukan surat kabar; batas akhir pengajuan tagihan; batas akhir verifikasi tagihan; jadwal dan tempat pelaksanaan rapat kreditor pertama dan rapat pencocokan piutang",p:[4],m:"dokumen",l:"Konsep penetapan penunjukan surat kabar; batas akhir pengajuan tagihan; batas akhir verifikasi tagihan; jadwal dan tempat pelaksanaan rapat kredior pertama dan rapat pencocokan piutang",w:"1 Hari",o:"Penetapan penunjukan surat kabar; batas akhir pengajuan tagihan; batas akhir verifikasi tagihan; jadwal dan tempat pelaksanaan rapat kredior pertama dan rapat pencocokan piutang",t:""},
       {k:"Menyusun materi pengumuman batas akhir pengajuan tagihan; batas akhir verifikasi tagihan; jadwal dan tempat pelaksanaan rapat kreditor pertama dan rapat pencocokan piutang",p:[3],l:"Penetapan penunjukan surat kabar; batas akhir pengajuan tagihan; batas akhir verifikasi tagihan; jadwal dan tempat pelaksanaan rapat kredior pertama dan rapat pencocokan piutang",w:"1 Jam",o:"Konsep pengumuman batas akhir pengajuan tagihan; batas akhir verifikasi tagihan; jadwal dan tempat pelaksanaan rapat kredior pertama dan rapat pencocokan piutang",t:""},
-      {k:"Persetujuan materi pengumuman batas akhir pengajuan tagihan; batas akhir verifikasi tagihan; jadwal dan tempat pelaksanaan rapat kreditor pertama dan rapat pencocokan piutang",p:[1],m:"keputusan",l:"Konsep pengumuman batas akhir pengajuan tagihan; batas akhir verifikasi tagihan; jadwal dan tempat pelaksanaan rapat kredior pertama dan rapat pencocokan piutang",w:"1 Jam",o:"Materi pengumuman batas akhir pengajuan tagihan; batas akhir verifikasi tagihan; jadwal dan tempat pelaksanaan rapat kredior pertama dan rapat pencocokan piutang",t:""},
-      {k:"Pengumuman batas akhir pengajuan tagihan; batas akhir verifikasi tagihan; jadwal dan tempat pelaksanaan rapat kreditor pertama dan rapat pencocokan piutang",p:[4,5],m:"selesai",l:"Materi pengumuman batas akhir pengajuan tagihan; batas akhir verifikasi tagihan; jadwal dan tempat pelaksanaan rapat kredior pertama dan rapat pencocokan piutang",w:"1 Jam",o:"Batas akhir pengajuan tagihan; batas akhir verifikasi tagihan; jadwal dan tempat pelaksanaan rapat kredior pertama dan rapat pencocokan piutang telah diumumkan pada surat kabar yang ditunjuk, berita negara, laman atau media sosial resmi BHP",t:""}
+      {back:1,k:"Persetujuan materi pengumuman batas akhir pengajuan tagihan; batas akhir verifikasi tagihan; jadwal dan tempat pelaksanaan rapat kreditor pertama dan rapat pencocokan piutang",p:[1],m:"keputusan",l:"Konsep pengumuman batas akhir pengajuan tagihan; batas akhir verifikasi tagihan; jadwal dan tempat pelaksanaan rapat kredior pertama dan rapat pencocokan piutang",w:"1 Jam",o:"Materi pengumuman batas akhir pengajuan tagihan; batas akhir verifikasi tagihan; jadwal dan tempat pelaksanaan rapat kredior pertama dan rapat pencocokan piutang",t:""},
+      {ms:["dokumen","selesai"],k:"Pengumuman batas akhir pengajuan tagihan; batas akhir verifikasi tagihan; jadwal dan tempat pelaksanaan rapat kreditor pertama dan rapat pencocokan piutang",p:[4,5],m:"selesai",l:"Materi pengumuman batas akhir pengajuan tagihan; batas akhir verifikasi tagihan; jadwal dan tempat pelaksanaan rapat kredior pertama dan rapat pencocokan piutang",w:"1 Jam",o:"Batas akhir pengajuan tagihan; batas akhir verifikasi tagihan; jadwal dan tempat pelaksanaan rapat kredior pertama dan rapat pencocokan piutang telah diumumkan pada surat kabar yang ditunjuk, berita negara, laman atau media sosial resmi BHP",t:""}
      ]}},
     {lamp:"Lampiran 4",judul:"Verifikasi Pengajuan Tagihan",
      dasar:[[1,"Kitab Undang-Undang Hukum Perdata;"],[2,"Undang-undang Nomor 25 Tahun 1992 tentang Perkoperasian;"],[3,UU_PERBANKAN+";"],[4,UU_YAYASAN+";"],[5,UU_NAKER+";"],[6,UU_NOTARIS+";"],[7,UU_KPKPU+";"],[8,UU_PT+";"],[9,UU_KUP+";"],[10,PP45+";"],[11,PERMEN7+"; dan"],[12,PERMEN1+"."]],
@@ -811,8 +865,8 @@ table.sop td.pel.off{background:#7F7F7F}
      tabel:{judul:"STANDAR OPERASIONAL PROSEDUR ADMINISTRASI PEMERINTAH<br>VERIFIKASI PENGAJUAN TAGIHAN",cols:["Sistem","Pemohon/ Kreditor","Verifikator I","Verifikator II","Debitor"],rows:[
       {k:"Dokumen Tagihan yang diajukan oleh Pemohon/ Kredior diterima oleh Sistem",p:[0],m:"mulai",l:"Dokumen Tagihan yang diajukan oleh Pemohon/ Kredior diterima oleh Sistem",w:"Real Time",o:"",t:""},
       {k:"Memeriksa kesesuaian pengajuan Tagihan dengan dokumen persyaratan dan Klasifikasi Kreditor",p:[2],m:"keputusan",l:"Dokumen yang diverifikasi:<br>1) Kreditor Perorangan:<br>&nbsp;&nbsp;- KTP bagi WNI; atau<br>&nbsp;&nbsp;- Paspor bagi WNA.<br>2) Kreditor Badan Hukum:<br>&nbsp;&nbsp;- Akta Pendirian berikut pengesahannya;<br>&nbsp;&nbsp;- Akta perubahan terakhir;<br>&nbsp;&nbsp;- Akta atau dokumen yang memuat identitas orang yang berwenang mewakili badan hukum (direktur, pengurus atau organ lainnya sesuai peraturan perundang-undangan).<br>3) Surat Kuasa, khusus Kreditor Badan Hukum, kuasa diberikan oleh Organ yang berwenang mewakili Badan Hukum;<br>4) Identitas Penerima Kuasa berupa KTP;<br>5) Surat Tugas / Surat Penunjukkan;<br>6) Dasar Tagihan (Perjanjian, purchase order, delivery note, invoice dan lain-lain);<br>7) Perjanjian jaminan kebendaan (jika ada).<br>8) Keterangan tertulis mengenai perhitungan yang menunjukan jumlah piutang.<br>9) Waktu pengajuan tagihan;<br>10) Dokumen pendukung lainnya.<br><br>Klasifikasi Kreditor dikategorikan sebagai:<br>- Kreditor Separatis; atau<br>- Kreditor Preferen; atau<br>- Kreditor Konkuren.",w:"1 Hari",o:"Hasil verifikasi kesesuaian pengajuan Tagihan dengan dokumen persyaratan",t:"1. Apabila pengajuan tagihan tidak diajukan langsung oleh Pemohon / Kreditor maka diperlukan Surat Kuasa dan Identitas Penerima Kuasa sebagaimana dimaksud butir kelengkapan nomor (3) dan (4);<br>2. Apabila pengajuan tagihan diajukan oleh pegawai / tim yang ditunjuk oleh Kantor Pajak maka diperlukan Surat Kuasa; Identitas Penerima Kuasa dan Surat Tugas sebagaimana dimaksud butir kelengkapan nomor (3), (4) dan (5).<br>3. Tagihan yang memerlukan perbaikan akan dikirimkan tautan (link) perbaikan kepada Pemohon / Kreditor"},
-      {k:"Perbaikan pengajuan Tagihan",p:[1],m:"keputusan",l:"Catatan verifikator pada hasil verifikasi kesesuaian pengajuan Tagihan dengan dokumen persyaratan",w:"1 Hari",o:"Pengajuan Tagihan yang telah diperbaiki oleh Pemohon/ Kredior",t:"Batas akhir waktu perbaikan disesuaikan dengan ketentuan Pasal 133 ayat (1) UU Kepailitan dan PKPU"},
-      {k:"Memeriksa waktu pengajuan tagihan",p:[2],m:"keputusan",l:"1) Hasil verifikasi kesesuaian pengajuan Tagihan dengan dokumen persyaratan<br>2) Waktu pengajuan tagihan",w:"5 menit",o:"Hasil verifikasi kesesuaian pengajuan Tagihan dengan dokumen persyaratan dan waktu pengajuan tagihan",t:"Apabila Pengajuan Tagihan dinyatakan lewat waktu maka dilanjutkan ke alur penyusunan daftar tagihan kreditor lewat waktu"},
+      {fl:"TIDAK",back:1,bl:"YA",k:"Perbaikan pengajuan Tagihan",p:[1],m:"keputusan",l:"Catatan verifikator pada hasil verifikasi kesesuaian pengajuan Tagihan dengan dokumen persyaratan",w:"1 Hari",o:"Pengajuan Tagihan yang telah diperbaiki oleh Pemohon/ Kredior",t:"Batas akhir waktu perbaikan disesuaikan dengan ketentuan Pasal 133 ayat (1) UU Kepailitan dan PKPU"},
+      {fl:"TIDAK",k:"Memeriksa waktu pengajuan tagihan",p:[2],m:"keputusan",l:"1) Hasil verifikasi kesesuaian pengajuan Tagihan dengan dokumen persyaratan<br>2) Waktu pengajuan tagihan",w:"5 menit",o:"Hasil verifikasi kesesuaian pengajuan Tagihan dengan dokumen persyaratan dan waktu pengajuan tagihan",t:"Apabila Pengajuan Tagihan dinyatakan lewat waktu maka dilanjutkan ke alur penyusunan daftar tagihan kreditor lewat waktu"},
       {k:"Sanggahan terhadap pengajuan tagihan",p:[4],l:"Hasil verifikasi kesesuaian pengajuan Tagihan dengan dokumen persyaratan dan waktu pengajuan tagihan",w:"3 Hari",o:"Hasil sanggahan terhadap pengajuan tagihan oleh Debitor",t:"1). Hasil sanggahan terhadap pengajuan tagihan berupa:<br>&nbsp;&nbsp;a. Tagihan diakui; atau<br>&nbsp;&nbsp;b. Tagihan dibantah.<br>2). Apabila pengajuan tagihan dibantah maka wajib mengunggah dokumen pendukung bantahan dan menyebutkan nilai tagihan yang diakui<br>3) Apabila Debitor tidak melakukan sanggahan hingga waktu yang ditentukan maka secara otomatis dianggap mengakui tagihan seluruhnya"},
       {k:"Menentukan Status Tagihan",p:[3],l:"1. Hasil verifikasi kesesuaian pengajuan Tagihan dengan dokumen persyaratan dan waktu pengajuan tagihan<br>2. Hasil sanggahan terhadap pengajuan tagihan oleh Debitor",w:"1 Hari",o:"Status Tagihan dapat berupa:<br>- Diakui seluruhnya; atau<br>- Dibantah sebagian; atau<br>- Dibantah.",t:"1. Apabila tagihan disertai perjanjian jaminan kebendaan (Gadai, Fidusia, Hak Tanggungan, Hipotek, atau hak agunan atas kebendaan lainnya) maka tagihan dikelompokkan sebagai tagihan Kreditor Separatis;<br>2. Apabila tagihan merupakan pajak terutang, upah buruh/ pekerja terutang dan tagihan yang ditentukan oleh Undang-Undang untuk didahulukan maka tagihan dikelompokkan sebagai tagihan Kreditor Preferen;<br>3. Apabila tagihan tidak disertai jaminan kebendaan dan bukan merupakan tagihan yang tidak ditentukan oleh Undang-Undang untuk didahulukan maka tagihan dikelompokkan sebagai tagihan Kreditor Konkuren;<br>4. Tagihan dapat diakui seluruhnya apabila memenuhi kesesuaian materiil dan formil;<br>5. Tagihan dapat dibantah apabila Tagihan tidak dapat dibuktikan; Tagihan telah dibayar lunas; Terdapat perjumpaan utang (set-off); Tagihan batal demi hukum;<br>6. Tagihan yang dibantah wajib menyebutkan nilai tagihan yang diakui"},
       {k:"Menyusun Daftar Tagihan Kreditor yang Diakui Sementara, Daftar Tagihan Kreditor Lewat Waktu dan Daftar Tagihan Kreditor yang Dibantah Sementara",p:[0],m:"dokumen",l:"Hasil verifikasi kesesuaian pengajuan Tagihan dengan dokumen persyaratan yang telah ditentukan klasifikasi Kreditor dan status tagihan",w:"1 Hari",o:"Daftar Tagihan Kreditor yang Diakui Sementara, Daftar Tagihan Kreditor Lewat Waktu dan Daftar Tagihan Kreditor yang Dibantah Sementara",t:""},
@@ -829,18 +883,60 @@ table.sop td.pel.off{background:#7F7F7F}
       "<div><h4>Keterkaitan</h4><ul>"+d.kait.map(function(x){return "<li>"+x+"</li>"}).join("")+"</ul></div><div><h4>Peralatan/perlengkapan</h4><ul>"+d.alat.map(function(x){return "<li>"+x+"</li>"}).join("")+"</ul></div>"+
       "<div><h4>Peringatan</h4><p>"+d.perin+"</p></div><div><h4>Pencatatan dan pendataan</h4><p>"+d.catat+"</p></div></div>";
   }
+  var SOPN=0;
+  function mkType(r,j){if(r.ms&&r.ms[j])return r.ms[j];if(r.p.length===1)return r.m||"proses";if(r.m==="selesai")return j===r.p.length-1?"selesai":"dokumen";return j===0?(r.m||"proses"):"dokumen"}
+  function mkHtml(m,i,j){return "<i class='mk "+m+"' data-r='"+i+"' data-j='"+j+"' title='"+m+"'>"+(m==="mulai"?"MULAI":m==="selesai"?"SELESAI":"")+"</i>"}
   function sopTable(tb){
-    var off=tb.off||[],n=tb.cols.length;
-    var h="<div class='sop-wrap'><div class='sop-ttl'>"+tb.judul+"</div><table class='sop'><thead><tr><th rowspan='2' class='no'>No</th><th rowspan='2' class='keg'>Kegiatan</th><th colspan='"+n+"'>Pelaksana</th><th colspan='3'>Mutu Baku</th><th rowspan='2' class='ket'>Keterangan</th></tr><tr>"+tb.cols.map(function(c){return "<th class='pel'>"+c+"</th>"}).join("")+"<th class='kel'>Kelengkapan</th><th class='wk'>Waktu</th><th class='out'>Output</th></tr></thead><tbody>";
+    var off=tb.off||[],n=tb.cols.length,id="sopt"+(SOPN++);
+    var CW={no:40,keg:250,pel:86,kel:215,wk:76,out:215,ket:190},tot=CW.no+CW.keg+CW.pel*n+CW.kel+CW.wk+CW.out+CW.ket;
+    var cg="<colgroup><col style='width:"+CW.no+"px'><col style='width:"+CW.keg+"px'>"+tb.cols.map(function(){return "<col style='width:"+CW.pel+"px'>"}).join("")+"<col style='width:"+CW.kel+"px'><col style='width:"+CW.wk+"px'><col style='width:"+CW.out+"px'><col style='width:"+CW.ket+"px'></colgroup>";
+    var h="<div class='sop-wrap' id='"+id+"'><div class='sop-ttl'>"+tb.judul+"</div>"+
+      "<div class='sop-mode'><button type='button' data-mode='list' aria-pressed='true'>Daftar langkah</button><button type='button' data-mode='table' aria-pressed='false'>Tabel asli</button></div>"+
+      "<div class='sop-scroll'><div class='sop-in' style='min-width:"+tot+"px'><table class='sop'>"+cg+"<thead><tr><th rowspan='2' class='no'>No</th><th rowspan='2' class='keg'>Kegiatan</th><th colspan='"+n+"'>Pelaksana</th><th colspan='3'>Mutu Baku</th><th rowspan='2' class='ket'>Keterangan</th></tr><tr>"+tb.cols.map(function(c){return "<th class='pel'>"+c+"</th>"}).join("")+"<th class='kel'>Kelengkapan</th><th class='wk'>Waktu</th><th class='out'>Output</th></tr></thead><tbody>";
+    var L="<ol class='sop-list'>";
     tb.rows.forEach(function(r,i){
       var cells="";
-      for(var c=0;c<n;c++){var on=r.p.indexOf(c),cls=off.indexOf(c)>=0?" off":"",mk="";
-        if(on>=0){var m;if(r.p.length===1)m=r.m||"proses";else if(r.m==="selesai")m=on===r.p.length-1?"selesai":"dokumen";else m=on===0?(r.m||"proses"):"dokumen";
-          mk="<i class='mk "+m+"' title='"+m+"'>"+(m==="mulai"?"MULAI":m==="selesai"?"SELESAI":"")+"</i>"}
+      for(var c=0;c<n;c++){var j=r.p.indexOf(c),cls=off.indexOf(c)>=0?" off":"",mk="";
+        if(j>=0)mk=mkHtml(mkType(r,j),i,j);
         cells+="<td class='pel"+cls+"'>"+mk+"</td>"}
-      h+="<tr><td class='no'>"+(i+1)+"</td><td class='keg'>"+r.k+"</td>"+cells+"<td class='kel'>"+r.l+"</td><td class='wk'>"+r.w+"</td><td class='out'>"+r.o+"</td><td class='ket'>"+r.t+"</td></tr>"});
-    return h+"</tbody></table></div>";
+      h+="<tr"+(r.back?" data-back='"+r.back+"' data-bl='"+(r.bl||"TIDAK")+"'":"")+(r.fl?" data-fl='"+r.fl+"'":"")+"><td class='no'>"+(i+1)+"</td><td class='keg'>"+r.k+"</td>"+cells+"<td class='kel'>"+r.l+"</td><td class='wk'>"+r.w+"</td><td class='out'>"+r.o+"</td><td class='ket'>"+r.t+"</td></tr>";
+      var who=r.p.map(function(c,j){var m=mkType(r,j);return "<span class='who'><i class='mk sm "+m+"'>"+(m==="mulai"?"MULAI":m==="selesai"?"SELESAI":"")+"</i>"+tb.cols[c]+"</span>"}).join("<span class='to'>›</span>");
+      L+="<li><div class='lh'><span class='ln'>"+(i+1)+"</span><div class='lk'>"+r.k+"</div></div><div class='lw'>"+who+"</div>"+
+        "<dl><dt>Kelengkapan</dt><dd>"+(r.l||"-")+"</dd><dt>Waktu</dt><dd>"+(r.w||"-")+"</dd><dt>Output</dt><dd>"+(r.o||"-")+"</dd>"+(r.t?"<dt>Keterangan</dt><dd>"+r.t+"</dd>":"")+"</dl></li>"});
+    return h+"</tbody></table><svg class='sop-arr' aria-hidden='true'></svg></div></div>"+L+"</ol></div>";
   }
+  // panah alur seperti pada dokumen SOP
+  var SVGNS="http://www.w3.org/2000/svg";
+  function rel(e,b){var r=e.getBoundingClientRect();return {l:r.left-b.left,r:r.right-b.left,t:r.top-b.top,b:r.bottom-b.top,cx:(r.left+r.right)/2-b.left,cy:(r.top+r.bottom)/2-b.top}}
+  function drawArrows(inner){
+    if(!inner.offsetParent||inner.offsetWidth===0)return;
+    var svg=inner.querySelector("svg.sop-arr"),B=inner.getBoundingClientRect();
+    svg.setAttribute("width",inner.scrollWidth);svg.setAttribute("height",inner.scrollHeight);svg.innerHTML="";
+    var defs=document.createElementNS(SVGNS,"defs");defs.innerHTML="<marker id='ah"+inner.parentNode.parentNode.id+"' viewBox='0 0 10 10' refX='9' refY='5' markerWidth='7' markerHeight='7' orient='auto-start-reverse'><path d='M0,0 L10,5 L0,10 z' fill='#111'/></marker>";svg.appendChild(defs);
+    var aid="url(#ah"+inner.parentNode.parentNode.id+")";
+    var mks=[].slice.call(inner.querySelectorAll(".mk")).map(function(e){var o=rel(e,B);o.r_=+e.dataset.r;o.j=+e.dataset.j;o.dec=e.classList.contains("keputusan");return o}).sort(function(a,b){return a.r_-b.r_||a.j-b.j});
+    function path(d,lbl,lx,ly){var p=document.createElementNS(SVGNS,"path");p.setAttribute("d",d);p.setAttribute("fill","none");p.setAttribute("stroke","#111");p.setAttribute("stroke-width","1.6");p.setAttribute("marker-end",aid);svg.appendChild(p);
+      if(lbl){var t=document.createElementNS(SVGNS,"text");t.setAttribute("x",lx);t.setAttribute("y",ly);t.setAttribute("class","al");t.textContent=lbl;svg.appendChild(t)}}
+    var H=function(v){return Math.round(v)+0.5};
+    for(var k=0;k<mks.length-1;k++){var a=mks[k],b=mks[k+1];
+      if(a.r_===b.r_){ if(b.cx>a.cx)path("M"+H(a.r)+","+H(a.cy)+" H"+H(b.l-2)); else path("M"+H(a.l)+","+H(a.cy)+" H"+H(b.r+2)); continue}
+      var tra=inner.querySelectorAll("tbody tr")[a.r_],lbl=a.dec?((tra&&tra.dataset.fl)||"YA"):"",ly=a.b+14;
+      if(Math.abs(a.cx-b.cx)<3)path("M"+H(a.cx)+","+H(a.b)+" V"+H(b.t-2),lbl,a.cx+6,ly);
+      else path("M"+H(a.cx)+","+H(a.b)+" V"+H(b.cy)+" H"+H(b.cx>a.cx?b.l-2:b.r+2),lbl,a.cx+6,ly);
+    }
+    [].slice.call(inner.querySelectorAll("tr[data-back]")).forEach(function(tr){
+      var ri=[].indexOf.call(tr.parentNode.children,tr),back=+tr.dataset.back;
+      var d=mks.filter(function(m){return m.r_===ri&&m.dec})[0],t=mks.filter(function(m){return m.r_===ri-back})[0];if(!d||!t)return;
+      var ty=t.cy+7;
+      if(Math.abs(t.cx-d.cx)<3){var x=Math.min(d.l,t.l)-20;path("M"+H(d.l)+","+H(d.cy)+" H"+H(x)+" V"+H(t.cy)+" H"+H(t.l-2),tr.dataset.bl,x-30,d.cy+4)}
+      else if(t.cx>d.cx)path("M"+H(d.cx)+","+H(d.t)+" V"+H(ty)+" H"+H(t.l-2),tr.dataset.bl,d.cx-34,d.t-4);
+      else path("M"+H(d.cx)+","+H(d.t)+" V"+H(ty)+" H"+H(t.r+2),tr.dataset.bl,d.cx+6,d.t-4);
+    });
+  }
+  function sopArrowsAll(){document.querySelectorAll(".sop-in").forEach(drawArrows)}
+  document.addEventListener("toggle",function(e){if(e.target&&e.target.tagName==="DETAILS")requestAnimationFrame(sopArrowsAll)},true);
+  document.addEventListener("click",function(e){var b=e.target.closest&&e.target.closest(".sop-mode button");if(!b)return;var w=b.closest(".sop-wrap");w.classList.toggle("as-table",b.dataset.mode==="table");w.querySelectorAll(".sop-mode button").forEach(function(x){x.setAttribute("aria-pressed",x===b?"true":"false")});requestAnimationFrame(function(){drawArrows(w.querySelector(".sop-in"))})});
+  window.addEventListener("load",function(){requestAnimationFrame(sopArrowsAll)});
   function drawSOP(){var w=document.getElementById("sopMain");if(w.dataset.ready)return;w.dataset.ready="1";
     w.innerHTML=sopHead(SOP5,SOP5.inst)+sopTable(SOP5.utama)+"<div class='sop-sub'><div class='eyebrow'>SOP mikro dalam Lampiran 5</div>"+SOP5.mikro.map(function(m,i){return "<details class='sop-det'"+(i===0?"":"")+"><summary><span class='no'>"+(i+1)+"</span>"+m.judul.replace("STANDAR OPERASIONAL PROSEDUR<br>","")+"</summary>"+sopTable(m)+"</details>"}).join("")+"</div>";
     document.getElementById("sopLamp").innerHTML=SOPAP.map(function(s,i){return "<details class='sop-det'><summary><span class='no'>"+(i+1)+"</span><span><b>"+s.lamp+"</b> · "+s.judul+"</span></summary>"+sopHead({no:"",buat:"",rev:"",ef:"",sah:SOPAP_SAH.sah,nama:SOPAP_SAH.nama,nip:SOPAP_SAH.nip,judul:s.judul,dasar:s.dasar,kual:s.kual,kait:s.kait,alat:s.alat,perin:s.perin,catat:s.catat},SOPAP_INST)+sopTable(s.tabel)+"</details>"}).join("");
@@ -893,15 +989,15 @@ table.sop td.pel.off{background:#7F7F7F}
     var d9=document.getElementById("dots9");d9.innerHTML=cases.map(function(){return "<i></i>"}).join("");
     cases.forEach(function(c,k){setTimeout(function(){d9.children[k].classList.add("on")},400+k*120)});
     var race=document.getElementById("race"),arr=cases.slice().sort(function(a,b){return b.s-a.s||new Date(a.d)-new Date(b.d)});
-    race.innerHTML=arr.map(function(c){return "<div class='r'><span class='nm'>"+c.n+"</span><span class='tr'><span class='fi'></span></span><span class='v'>"+c.st.replace("Tahap ","T.")+"</span></div>"}).join("");
+    race.innerHTML=arr.map(function(c){return "<div class='r'><span class='nm'>"+c.n+"</span><span class='tr'><span class='fi'></span></span><span class='v'>"+c.st.replace("Tahap ","T.").replace(" dan ","–")+"</span></div>"}).join("");
     setTimeout(function(){race.querySelectorAll(".r").forEach(function(r,k){var c=arr[k];r.querySelector(".fi").style.transitionDelay=(k*90)+"ms";r.querySelector(".fi").style.width=(c.s/21*100)+"%"})},200);
     var facts=cases.map(function(c){return (c.full||c.n)+" · putusan "+tgl(c.d)+" · "+c.st+": "+c.tahap});
     var t=document.getElementById("tkT");function tk(){t.style.animation="none";void t.offsetWidth;t.style.animation="";t.textContent=facts[tkI%facts.length];tkI++}tk();clearInterval(tkTimer);tkTimer=setInterval(tk,3200)}
-  var drawers=[drawDash,function(){renderDetail();drawBoard()},function(){drawCmp();drawDonut(true);drawTable()},function(){drawSOP();drawSteps()},drawWajib];
+  var drawers=[drawDash,function(){renderDetail();drawBoard()},function(){drawCmp();drawDonut(true);drawTable()},function(){drawSOP();drawSteps();requestAnimationFrame(sopArrowsAll)},drawWajib];
   function go(n){cur=Math.max(0,Math.min(scenes.length-1,n));hideTip();clearInterval(sopTimer);clearInterval(tkTimer);
     scenes.forEach(function(s,i){s.classList.toggle("on",i===cur)});tabs.forEach(function(b,i){b.setAttribute("aria-selected",i===cur?"true":"false");if(i===cur)b.scrollIntoView({block:"nearest",inline:"center"})});
     dots.querySelectorAll("i").forEach(function(d,i){d.classList.toggle("on",i===cur)});
-    document.getElementById("prev").disabled=cur===0;document.getElementById("next").textContent=cur===scenes.length-1?"Kembali ke awal":"Berikutnya ›";
+    document.getElementById("prev").disabled=cur===0;document.getElementById("next").innerHTML=cur===scenes.length-1?"Kembali<span class='t'> ke awal</span>":"Berikutnya ›";
     window.scrollTo({top:0,behavior:reduce?"auto":"smooth"});drawers[cur]();
     try{localStorage.setItem("bhp-data-scene3",cur)}catch(e){}}
   tabs.forEach(function(b){b.addEventListener("click",function(){go(+b.dataset.s)})});
@@ -910,7 +1006,7 @@ table.sop td.pel.off{background:#7F7F7F}
   document.getElementById("next").addEventListener("click",function(){go(cur===scenes.length-1?0:cur+1)});
   document.addEventListener("keydown",function(e){if(e.target.tagName==="INPUT")return;if(e.key==="ArrowRight"||e.key==="PageDown")go(cur+1);if(e.key==="ArrowLeft"||e.key==="PageUp")go(cur-1)});
   var sx0=null;document.addEventListener("touchstart",function(e){sx0=e.touches[0].clientX},{passive:true});document.addEventListener("touchend",function(e){if(sx0==null)return;var dx=e.changedTouches[0].clientX-sx0;if(Math.abs(dx)>70&&!e.target.closest("svg,.tabs"))go(dx<0?cur+1:cur-1);sx0=null},{passive:true});
-  var rt;window.addEventListener("resize",function(){clearTimeout(rt);rt=setTimeout(function(){if(cur===2){drawCmp();drawDonut(false)}},200)});
+  var rt;window.addEventListener("resize",function(){clearTimeout(rt);rt=setTimeout(function(){if(cur===2){drawCmp();drawDonut(false)}if(cur===3)sopArrowsAll()},200)});
   var st=0;try{st=+(localStorage.getItem("bhp-data-scene3")||0)}catch(e){}
   go(st>=0&&st<scenes.length?st:0);
 })();
