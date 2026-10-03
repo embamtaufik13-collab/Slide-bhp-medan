@@ -2,7 +2,7 @@ name: Deploy ke GitHub Pages
 
 on:
   push:
-    branches: ["main", "master", "ccr-55c0985d-ty6j90"]
+    branches: ["main", "master", "ccr-55c0985d-ty6j90", "ccr-664b2cf6-f8ti44"]
   workflow_dispatch:
 
 permissions:
