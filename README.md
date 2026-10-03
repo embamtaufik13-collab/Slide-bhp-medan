@@ -6,6 +6,13 @@ Situs statis untuk slide presentasi Balai Harta Peninggalan (BHP) Medan, di-host
 
 https://embamtaufik13-collab.github.io/Slide-bhp-medan/
 
+## File paparan
+
+Slide paparan (PowerPoint) tersedia di `BHP-Medan-Paparan-Klaster-1.pptx` dan dapat
+diunduh dari situs lewat tombol **Unduh PPTX** di bagian bawah halaman:
+
+https://embamtaufik13-collab.github.io/Slide-bhp-medan/BHP-Medan-Paparan-Klaster-1.pptx
+
 ## Cara memperbarui slide
 
 1. Letakkan file slide (HTML) di root repo dengan nama `index.html`.
