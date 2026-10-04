@@ -530,6 +530,95 @@ table.sop td.pel.off{background:#7F7F7F}
 .dash .tk-k{padding:5px 12px;border-radius:999px;background:rgba(245,194,61,.14);border:1px solid rgba(245,194,61,.4)}
 @media (max-width:560px){.fx-wm{width:220px;right:-50px;top:10px}.dash h1.light{font-size:42px}.dash .tile{border-radius:20px}.dash .ticker{border-radius:20px;align-items:flex-start;flex-direction:column;gap:8px}}
 @media (prefers-reduced-motion:reduce){.fx-dust{display:none}}
+
+/* ---------- usulan dalam RUU: thumbnail lembar pasal + lembar Lampiran II ---------- */
+.ruu-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,470px);gap:30px;align-items:center}
+.ruu ol li{line-height:1.45}
+.pz{display:inline-flex;align-items:center;gap:7px;margin-left:8px;vertical-align:2px;border:0;background:var(--maroon);color:var(--gold);border-radius:999px;padding:4px 12px 4px 9px;font-size:12.5px;font-weight:800;letter-spacing:.02em;cursor:pointer;white-space:nowrap;box-shadow:0 4px 12px rgba(28,58,138,.22);transition:transform .2s,background .2s}
+.pz:hover{background:var(--maroon-2);transform:translateY(-1px)}
+.pz i,.lp-live i{width:8px;height:8px;border-radius:50%;background:var(--gold);flex:none;animation:lpBlink 1.2s ease-in-out infinite}
+.ruu .note .pz{margin:8px 0 0;vertical-align:0}
+.lp-pick{position:relative;padding:16px 16px 14px;border-radius:20px;background:radial-gradient(420px 220px at 100% 0%,rgba(245,194,61,.22),transparent 70%),linear-gradient(160deg,var(--maroon),var(--maroon-3));color:#fff;overflow:hidden}
+.lp-pick::before{content:"";position:absolute;right:-70px;bottom:-90px;width:220px;height:220px;border-radius:50%;border:38px solid rgba(245,194,61,.10)}
+.lp-pick .hd{position:relative;display:flex;align-items:flex-end;justify-content:space-between;gap:10px;margin-bottom:12px}
+.lp-pick .hd small{display:block;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);font-weight:800}
+.lp-pick .hd b{display:block;font-size:15.5px;line-height:1.3}
+.lp-live{display:inline-flex;align-items:center;gap:6px;font-size:11.5px;font-weight:800;letter-spacing:.06em;color:var(--cream);white-space:nowrap}
+.lp-thumbs{position:relative;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.th{--d:0s;position:relative;aspect-ratio:3/4;border:2px solid rgba(255,255,255,.0);border-radius:12px;background:linear-gradient(180deg,#fff,#FBFAF5);color:var(--ink);padding:11px 10px 10px;text-align:left;cursor:pointer;display:flex;flex-direction:column;overflow:hidden;
+  box-shadow:0 10px 24px rgba(0,0,0,.28);transform:rotate(var(--r,0deg));transition:transform .35s cubic-bezier(.2,.8,.2,1),box-shadow .35s;animation:thGlow 2.4s ease-in-out var(--d) infinite}
+.th:nth-child(1){--r:-2.2deg;--d:0s}.th:nth-child(2){--r:0deg;--d:.8s}.th:nth-child(3){--r:2.2deg;--d:1.6s}
+.th::before{content:"";position:absolute;left:0;right:0;top:0;height:5px;background:linear-gradient(90deg,var(--gold),#FFE07A,var(--gold))}
+.th::after{content:"";position:absolute;top:-20%;bottom:-20%;left:-60%;width:40%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.95),transparent);transform:skewX(-18deg);animation:thShine 2.4s ease-in-out var(--d) infinite;pointer-events:none}
+.th:hover,.th:focus-visible,.th.near{animation:none;transform:translateY(-8px) rotate(0deg) scale(1.04);box-shadow:0 22px 40px rgba(0,0,0,.4),0 0 0 3px var(--gold)}
+.th .tg{font-size:8.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-2);font-weight:800}
+.th .pn{font-family:var(--fs);font-weight:700;color:var(--maroon);font-size:clamp(17px,1.6vw,22px);line-height:1.05;margin-top:3px}
+.th .tt{font-size:10.5px;line-height:1.25;font-weight:700;color:var(--muted);margin-top:4px;min-height:2.5em}
+.th .ln{margin-top:auto;display:grid;gap:4px}
+.th .ln i{display:block;height:4px;border-radius:2px;background:#DCE2EE}
+.th .ln i.g{background:var(--gold);opacity:.75}
+.th .op{align-self:flex-end;margin-top:8px;display:inline-flex;align-items:center;gap:5px;padding:3px 8px 3px 6px;border-radius:999px;background:var(--maroon);color:var(--gold);font-size:9.5px;font-weight:800;letter-spacing:.08em;box-shadow:0 4px 10px rgba(28,58,138,.35)}
+.th .op i{width:6px;height:6px;border-radius:50%;background:var(--gold);animation:lpBlink 1.2s ease-in-out var(--d) infinite}
+.lp-pick .ht{position:relative;margin-top:12px;font-size:12.5px;color:var(--cream);opacity:.9}
+@keyframes thGlow{0%,100%{box-shadow:0 10px 24px rgba(0,0,0,.28),0 0 0 0 rgba(245,194,61,0);border-color:rgba(245,194,61,0)}45%,55%{box-shadow:0 10px 24px rgba(0,0,0,.28),0 0 0 4px rgba(245,194,61,.55),0 0 34px 8px rgba(245,194,61,.55);border-color:var(--gold)}}
+@keyframes thShine{0%,35%{left:-60%}70%,100%{left:130%}}
+@keyframes lpBlink{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.2;transform:scale(.7)}}
+
+/* lembar Lampiran II */
+body.lp-on{overflow:hidden}
+.lp{position:fixed;inset:0;z-index:60;display:grid;place-items:center;padding:24px}
+.lp[hidden]{display:none}
+.lp-bg{position:absolute;inset:0;background:radial-gradient(900px 600px at 50% 0%,rgba(42,79,176,.55),rgba(11,26,71,.86));backdrop-filter:blur(6px);animation:lpFade .3s ease both}
+.lp-sheet{position:relative;width:min(900px,100%);max-height:calc(100vh - 48px);display:flex;flex-direction:column;background:#FFFEFA;border-radius:24px;overflow:hidden;box-shadow:0 40px 90px rgba(0,0,0,.5),0 0 0 1px rgba(245,194,61,.35);animation:lpIn .45s cubic-bezier(.2,.8,.2,1) both}
+.lp-top{position:relative;display:flex;align-items:center;gap:14px;padding:16px 20px 16px 22px;background:linear-gradient(135deg,var(--maroon),var(--maroon-2));color:#fff;border-bottom:3px solid var(--gold)}
+.lp-top img{height:44px;width:auto;border-radius:8px;flex:none}
+.lp-top small{display:block;font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);font-weight:800}
+.lp-top b{display:block;font-family:var(--fs);font-size:clamp(18px,2vw,23px);line-height:1.2}
+.lp-x{margin-left:auto;flex:none;width:42px;height:42px;border-radius:50%;border:2px solid rgba(255,255,255,.35);background:rgba(255,255,255,.08);color:#fff;font-size:24px;line-height:1;cursor:pointer;display:grid;place-items:center}
+.lp-x:hover{background:var(--gold);color:var(--maroon-2);border-color:var(--gold)}
+.lp-tabs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;padding:14px 20px 0;background:var(--panel-2);border-bottom:1px solid var(--line)}
+.lp-tabs button{border:0;border-radius:14px 14px 0 0;background:transparent;padding:10px 12px 12px;text-align:left;cursor:pointer;display:flex;gap:10px;align-items:flex-start;color:var(--muted);transition:background .2s,color .2s}
+.lp-tabs button i{font-style:normal;flex:none;width:30px;height:30px;border-radius:9px;background:var(--line);color:var(--maroon);display:grid;place-items:center;font-weight:800;font-size:14px}
+.lp-tabs button span{font-size:13.5px;font-weight:700;line-height:1.25}
+.lp-tabs button em{font-style:normal;display:none}
+.lp-tabs button span small{display:block;font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;font-weight:800;color:var(--gold-2);margin-bottom:1px}
+.lp-tabs button[aria-selected="true"]{background:#FFFEFA;color:var(--ink);box-shadow:0 -3px 0 var(--gold) inset}
+.lp-tabs button[aria-selected="true"] i{background:var(--maroon);color:var(--gold)}
+.lp-body{overflow:auto;padding:26px 34px 10px;overscroll-behavior:contain}
+.lp-k{font-size:12.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold-2);font-weight:800}
+.lp-h{font-family:var(--fs);font-size:clamp(23px,2.6vw,32px);line-height:1.15;color:var(--maroon);margin:4px 0 12px}
+.lp-ans{display:flex;gap:12px;align-items:flex-start;padding:12px 16px;border-radius:14px;background:var(--cream);border:1px solid var(--gold);font-size:15px;line-height:1.45;margin-bottom:18px}
+.lp-ans b{flex:none;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-2);padding-top:2px}
+.lp-ol{list-style:none;margin:0;padding:0;display:grid;gap:12px;font-family:var(--fs);font-size:clamp(17px,1.5vw,19.5px);line-height:1.6;color:var(--ink)}
+.lp-ol>li{position:relative;display:grid;grid-template-columns:44px minmax(0,1fr);padding:6px 10px 6px 0;border-radius:12px;animation:up .5s cubic-bezier(.2,.8,.2,1) both;animation-delay:calc(.12s + var(--i)*.09s)}
+.lp-ol>li>.n{font-family:var(--f);font-weight:800;color:var(--maroon);font-size:.92em;padding-left:10px}
+.lp-ol .tx{background-image:linear-gradient(transparent 58%,rgba(245,194,61,.55) 58%,rgba(245,194,61,.55) 92%,transparent 92%);background-repeat:no-repeat;background-size:0% 100%;-webkit-box-decoration-break:clone;box-decoration-break:clone;transition:background-size 1.1s cubic-bezier(.6,0,.2,1) .55s;border-radius:3px}
+.lp-ol>li.hl{background:linear-gradient(90deg,rgba(245,194,61,.12),transparent 70%)}
+.lp-ol>li.hl::before{content:"";position:absolute;left:-14px;top:8px;bottom:8px;width:4px;border-radius:2px;background:var(--gold)}
+.lp-ol>li.hl.go .tx{background-size:100% 100%}
+.lp-ol ol{list-style:none;margin:8px 0 2px;padding:0;display:grid;gap:4px}
+.lp-ol ol li{display:grid;grid-template-columns:28px minmax(0,1fr)}
+.lp-ol ol li b{font-family:var(--f);font-weight:800;color:var(--maroon);font-size:.9em}
+.lp-ft{display:flex;align-items:center;gap:10px;padding:12px 20px 14px 34px;border-top:1px solid var(--line);background:#fff}
+.lp-ft .nb2{flex:1;min-width:0;font-size:12.5px;color:var(--muted);font-style:italic}
+.lp-ft .copy{margin-left:0}
+.lp-ft .copy.ok{background:var(--ok);border-color:var(--ok);color:#fff}
+.lp-nav{flex:none;width:40px;height:40px;border-radius:50%;border:2px solid var(--line);background:#fff;color:var(--maroon);font-size:22px;font-weight:800;cursor:pointer;display:grid;place-items:center}
+.lp-nav:hover:not(:disabled){border-color:var(--maroon);background:var(--cream)}
+.lp-nav:disabled{opacity:.35;cursor:default}
+@keyframes lpFade{from{opacity:0}to{opacity:1}}
+@keyframes lpIn{from{opacity:0;transform:translateY(26px) scale(.97)}to{opacity:1;transform:none}}
+@media (max-width:1000px){.ruu-grid{grid-template-columns:minmax(0,1fr);gap:18px}.lp-pick{max-width:560px}}
+@media (max-width:560px){
+  .pz{margin:6px 0 0;display:flex;width:max-content}
+  .lp{padding:0;align-items:end}
+  .lp-sheet{max-height:92vh;border-radius:22px 22px 0 0}
+  .lp-top{padding:12px 14px}.lp-top img{height:36px}
+  .lp-tabs{padding:10px 10px 0;gap:4px}.lp-tabs button{padding:8px 6px 10px;gap:6px;flex-direction:column}.lp-tabs button span{font-size:11.5px}.lp-tabs button span small{display:none}.lp-tabs button .lg{display:none}.lp-tabs button em{display:block}
+  .lp-top small{display:none}.lp-top b{font-size:17px}.th .op{font-size:8.5px;padding:2px 6px 2px 5px}.th .tt{font-size:9.5px}.th .ln i:nth-child(n+4){display:none}
+  .lp-body{padding:18px 18px 8px}.lp-ol>li{grid-template-columns:34px minmax(0,1fr)}.lp-ol>li>.n{padding-left:4px}
+  .lp-ft{padding:10px 12px;flex-wrap:wrap}.lp-ft .nb2{flex-basis:100%;order:-1}.lp-ft .copy{margin-right:auto}
+}
 </style>
 </head>
 <body>
@@ -643,9 +732,18 @@ table.sop td.pel.off{background:#7F7F7F}
       <div class="why" id="why"></div>
     </div>
     <div class="card ruu">
-      <div class="eyebrow" style="margin-bottom:4px">Usulan dalam RUU</div>
-      <ol><li>Pengakuan BHP sebagai kurator negara yang dapat menangani seluruh jenis perkara kepailitan.</li><li>Kriteria perkara khusus BHP, yang sekaligus menjadi larangan bagi kurator perseorangan.</li></ol>
-      <div class="note"><b>Diatur di RUU Kepailitan dan PKPU</b>Kriteria dan tata cara penunjukan BHP pada perkara tertentu, kepailitan harta peninggalan tanpa ahli waris, dan kelanjutan perkara apabila debitor menghilang.</div>
+      <div class="ruu-grid">
+        <div>
+          <div class="eyebrow" style="margin-bottom:4px">Usulan dalam RUU</div>
+          <ol><li>Pengakuan BHP sebagai kurator negara yang dapat menangani seluruh jenis perkara kepailitan.<button class="pz" data-lp="1" data-hl="0,1"><i></i>Pasal 2</button></li><li>Kriteria perkara khusus BHP, yang sekaligus menjadi larangan bagi kurator perseorangan.<button class="pz" data-lp="2" data-hl="0,1"><i></i>Pasal 3</button></li></ol>
+          <div class="note"><b>Diatur di RUU Kepailitan dan PKPU</b>Kriteria dan tata cara penunjukan BHP pada perkara tertentu, kepailitan harta peninggalan tanpa ahli waris, dan kelanjutan perkara apabila debitor menghilang.<br><button class="pz" data-lp="2" data-hl="3"><i></i>Pasal 3 ayat (4)</button></div>
+        </div>
+        <div class="lp-pick">
+          <div class="hd"><div><small>Lampiran II</small><b>Contoh rumusan pasal RUU tentang Profesi Kurator</b></div><span class="lp-live"><i></i>3 PASAL</span></div>
+          <div class="lp-thumbs" id="lpThumbs"></div>
+          <div class="ht">Ketuk lembar untuk membaca rumusan pasalnya.</div>
+        </div>
+      </div>
     </div>
     <div class="take"><span class="k">Intinya</span>Di luar perkara khusus itu, para pihak tetap bebas memilih kurator. RUU Profesi Kurator cukup memuat dasar penugasannya; kriteria dan tata cara penunjukan diatur dalam RUU Kepailitan dan PKPU.</div>
   </section>
@@ -659,6 +757,15 @@ table.sop td.pel.off{background:#7F7F7F}
 <button class="nb" id="prev" aria-label="Sebelumnya">‹<span class="t"> Sebelumnya</span></button>
   <button class="nb primary" id="next">Berikutnya ›</button>
 </div></div>
+<div class="lp" id="lp" hidden role="dialog" aria-modal="true" aria-labelledby="lpTitle">
+  <div class="lp-bg" data-close></div>
+  <article class="lp-sheet">
+    <header class="lp-top"><img id="lpLogo" alt="Logo Pengayoman"><div><small>Lampiran II · Naskah Masukan BHP Medan · 3 Oktober 2026</small><b id="lpTitle">Contoh Rumusan Pasal RUU tentang Profesi Kurator</b></div><button class="lp-x" data-close aria-label="Tutup">×</button></header>
+    <nav class="lp-tabs" role="tablist" id="lpTabs"></nav>
+    <div class="lp-body" id="lpBody" tabindex="-1"></div>
+    <footer class="lp-ft"><span class="nb2">Rumusan berikut merupakan bahan pertimbangan. Nomor pasal dapat disesuaikan dengan sistematika RUU.</span><button class="copy" id="lpCopy">Salin pasal</button><button class="lp-nav" id="lpPrev" aria-label="Pasal sebelumnya">‹</button><button class="lp-nav" id="lpNext" aria-label="Pasal berikutnya">›</button></footer>
+  </article>
+</div>
 <div id="tip" role="status"></div>
 
 <script>
@@ -1022,6 +1129,73 @@ table.sop td.pel.off{background:#7F7F7F}
   function drawWajib(){var l=document.getElementById("wajib");l.innerHTML="";wajib.forEach(function(w,i){var b=document.createElement("button");b.setAttribute("aria-pressed",i===wSel?"true":"false");b.innerHTML="<i>"+(i+1)+"</i>"+w[0];b.addEventListener("click",function(){wSel=i;drawWajib()});b.addEventListener("pointerenter",function(){wSel=i;drawWajib()});l.appendChild(b)});var w=wajib[wSel];document.getElementById("why").innerHTML="<div><b>Kaitan dengan tugas BHP</b>"+w[1]+"</div><div><b>Contoh di BHP Medan</b>"+w[2]+"</div>"}
 
 
+  // ===== LAMPIRAN II: contoh rumusan pasal (Data Pendukung Klaster 1) =====
+  var PASAL=[
+    {t:"Tugas Bersama dan Serah Terima",tb:"Tugas Bersama dan Serah Terima",s:"Tugas bersama",ans:"Kendala saat BHP bekerja bersama kurator perseorangan: pembagian imbalan jasa dan tanggung jawab, serta peralihan dari pengurus PKPU kepada kurator.",ay:[
+      "Dalam hal diangkat lebih dari satu Kurator atau Pengurus, Hakim Pengawas menetapkan pembagian tugas, tanggung jawab, dan imbalan jasa masing-masing paling lambat pada rapat Kreditor pertama.",
+      "Bagian imbalan jasa Balai Harta Peninggalan merupakan penerimaan negara bukan pajak.",
+      "Kurator atau Pengurus yang digantikan, termasuk Pengurus dalam hal penundaan kewajiban pembayaran utang berakhir dengan pernyataan pailit, wajib menyerahkan berkas, harta, dan laporan kepada Kurator paling lama 14 (empat belas) hari."]},
+    {t:"Kedudukan Balai Harta Peninggalan",tb:"Kedudukan BHP",s:"Kedudukan BHP",ans:"Usulan 1: pengakuan BHP sebagai kurator negara yang dapat menangani seluruh jenis perkara kepailitan.",ay:[
+      "Balai Harta Peninggalan merupakan Kurator negara dan Pengurus negara yang dapat menangani seluruh jenis perkara kepailitan dan penundaan kewajiban pembayaran utang.",
+      "Kewenangan Balai Harta Peninggalan sebagai Kurator dan Pengurus bersumber dari Undang-Undang ini dan tidak memerlukan izin atau pendaftaran.",
+      "Tugas Kurator dan Pengurus pada Balai Harta Peninggalan dilaksanakan oleh pegawai aparatur sipil negara yang menduduki jabatan fungsional Kurator Keperdataan.",
+      "Dalam hal Balai Harta Peninggalan menjalankan tugas keperdataan dan tugas Kurator dalam perkara yang sama, masing-masing tugas dilaksanakan oleh pejabat yang berbeda dan dipertanggungjawabkan secara terpisah."]},
+    {t:"Penugasan Balai Harta Peninggalan pada Perkara Tertentu",tb:"Penugasan BHP pada Perkara Tertentu",s:"Perkara tertentu",ans:"Usulan 2: kriteria perkara khusus BHP yang sekaligus menjadi larangan bagi kurator perseorangan. Ayat (4) menyerahkan kriteria rinci dan tata cara penunjukan kepada RUU Kepailitan dan PKPU.",ay:[
+      ["Pengadilan wajib mengangkat Balai Harta Peninggalan sebagai Kurator atau Pengurus dalam hal:",[
+        "Debitor telah meninggal dunia dan tidak terdapat ahli waris atau harta peninggalannya tidak terurus;",
+        "Debitor tidak diketahui tempat tinggal atau keberadaannya;",
+        "ahli waris atau pihak yang berkepentingan masih di bawah umur atau berada di bawah pengampuan;",
+        "harta Debitor bernilai kecil;",
+        "permohonan diajukan oleh pekerja; atau",
+        "Kurator atau Pengurus berhenti, diberhentikan, atau meninggal dunia, dan tidak terdapat usulan pengganti yang memenuhi syarat."]],
+      "Dalam perkara sebagaimana dimaksud pada ayat (1), Kurator atau Pengurus orang perseorangan tidak dapat diangkat sebagai Kurator atau Pengurus.",
+      "Di luar perkara sebagaimana dimaksud pada ayat (1), Pengadilan mengangkat Kurator atau Pengurus berdasarkan usulan pemohon.",
+      "Kriteria rinci dan tata cara penunjukan sebagaimana dimaksud pada ayat (1) diatur dalam Undang-Undang mengenai kepailitan dan penundaan kewajiban pembayaran utang."]}
+  ];
+  var LP_HL=[[],[0],[0,1]];
+  var lp=document.getElementById("lp"),lpBody=document.getElementById("lpBody"),lpTabs=document.getElementById("lpTabs"),lpCopy=document.getElementById("lpCopy"),lpSel=0,lpBack=null;
+  document.getElementById("lpLogo").src=LOGO;
+  function abc(i){return String.fromCharCode(97+i)+"."}
+  // thumbnail: lembar mini berkedip, garis emas = ayat yang dibahas di layar ini
+  (function(){var w=document.getElementById("lpThumbs");
+    PASAL.forEach(function(p,i){var b=document.createElement("button");b.className="th";b.dataset.lp=i;b.setAttribute("aria-label","Buka Usulan Pasal "+(i+1)+": "+p.t);
+      var lines="";p.ay.forEach(function(a,k){var g=LP_HL[i].indexOf(k)>=0?" class='g'":"";var n=typeof a==="string"?(a.length>150?2:1):3;for(var j=0;j<n;j++)lines+="<i"+g+" style='width:"+(j===n-1?55+((k*17+i*11)%35):100)+"%'></i>"});
+      b.innerHTML="<span class='tg'>Usulan</span><span class='pn'>Pasal "+(i+1)+"</span><span class='tt'>"+p.s+"</span><span class='ln'>"+lines+"</span><span class='op'><i></i>BUKA</span>";
+      b.addEventListener("click",function(){openLp(i,LP_HL[i],b)});w.appendChild(b)})})();
+  PASAL.forEach(function(p,i){var b=document.createElement("button");b.setAttribute("role","tab");b.innerHTML="<i>"+(i+1)+"</i><span><small>Usulan Pasal "+(i+1)+"</small><span class='lg'>"+p.tb+"</span><em>"+p.s+"</em></span>";b.addEventListener("click",function(){renderLp(i,[])});lpTabs.appendChild(b)});
+  function renderLp(i,hl){lpSel=i;var p=PASAL[i];
+    lpTabs.querySelectorAll("button").forEach(function(b,k){b.setAttribute("aria-selected",k===i?"true":"false")});
+    var h="<div class='lp-k'>Usulan Pasal "+(i+1)+"</div><h2 class='lp-h'>"+p.t+"</h2><div class='lp-ans'><b>Menjawab</b><span>"+p.ans+"</span></div><ol class='lp-ol'>";
+    p.ay.forEach(function(a,k){var tx=typeof a==="string"?a:a[0];
+      h+="<li style='--i:"+k+"'"+(hl.indexOf(k)>=0?" class='hl'":"")+"><span class='n'>("+(k+1)+")</span><div><span class='tx'>"+tx+"</span>";
+      if(typeof a!=="string")h+="<ol>"+a[1].map(function(x,j){return "<li><b>"+abc(j)+"</b><span><span class='tx'>"+x+"</span></span></li>"}).join("")+"</ol>";
+      h+="</div></li>"});
+    lpBody.innerHTML=h+"</ol>";lpBody.scrollTop=0;
+    document.getElementById("lpPrev").disabled=i===0;document.getElementById("lpNext").disabled=i===PASAL.length-1;
+    lpCopy.textContent="Salin pasal";lpCopy.classList.remove("ok");
+    var first=lpBody.querySelector(".hl");
+    requestAnimationFrame(function(){requestAnimationFrame(function(){lpBody.querySelectorAll(".hl").forEach(function(li){li.classList.add("go")});
+      if(first)setTimeout(function(){var r=first.getBoundingClientRect(),br=lpBody.getBoundingClientRect();if(r.bottom>br.bottom||r.top<br.top)lpBody.scrollTo({top:first.offsetTop-24,behavior:reduce?"auto":"smooth"})},350)})})}
+  function openLp(i,hl,from){lpBack=from||document.activeElement;renderLp(i,hl||[]);lp.hidden=false;document.body.classList.add("lp-on");hideTip();setTimeout(function(){lp.querySelector(".lp-x").focus()},30)}
+  function closeLp(){if(lp.hidden)return;lp.hidden=true;document.body.classList.remove("lp-on");if(lpBack&&lpBack.focus)lpBack.focus()}
+  function lpText(i){var p=PASAL[i],s="Usulan Pasal "+(i+1)+"\n("+p.t+")\n";p.ay.forEach(function(a,k){if(typeof a==="string")s+="("+(k+1)+") "+a+"\n";else{s+="("+(k+1)+") "+a[0]+"\n";a[1].forEach(function(x,j){s+="    "+abc(j)+" "+x+"\n"})}});return s.trim()}
+  lpCopy.addEventListener("click",function(){var s=lpText(lpSel);function ok(){lpCopy.textContent="Tersalin ✓";lpCopy.classList.add("ok");setTimeout(function(){lpCopy.textContent="Salin pasal";lpCopy.classList.remove("ok")},1800)}
+    function fb(){var ta=document.createElement("textarea");ta.value=s;ta.style.position="fixed";ta.style.opacity="0";document.body.appendChild(ta);ta.select();try{document.execCommand("copy");ok()}catch(e){}document.body.removeChild(ta)}
+    if(navigator.clipboard&&window.isSecureContext)navigator.clipboard.writeText(s).then(ok,fb);else fb()});
+  document.getElementById("lpPrev").addEventListener("click",function(){if(lpSel>0)renderLp(lpSel-1,[])});
+  document.getElementById("lpNext").addEventListener("click",function(){if(lpSel<PASAL.length-1)renderLp(lpSel+1,[])});
+  lp.querySelectorAll("[data-close]").forEach(function(b){b.addEventListener("click",closeLp)});
+  document.querySelectorAll(".pz[data-lp]").forEach(function(b){var th=function(){return document.querySelectorAll("#lpThumbs .th")[+b.dataset.lp]};
+    b.addEventListener("click",function(){openLp(+b.dataset.lp,b.dataset.hl.split(",").map(Number),b)});
+    b.addEventListener("pointerenter",function(){th().classList.add("near")});b.addEventListener("pointerleave",function(){th().classList.remove("near")})});
+  lp.addEventListener("keydown",function(e){
+    if(e.key==="Escape"){e.preventDefault();closeLp()}
+    else if(e.key==="ArrowRight"&&lpSel<PASAL.length-1)renderLp(lpSel+1,[]);
+    else if(e.key==="ArrowLeft"&&lpSel>0)renderLp(lpSel-1,[]);
+    else if(e.key==="Tab"){var f=[].slice.call(lp.querySelectorAll("button:not(:disabled)"));var a=f[0],z=f[f.length-1];if(e.shiftKey&&document.activeElement===a){e.preventDefault();z.focus()}else if(!e.shiftKey&&document.activeElement===z){e.preventDefault();a.focus()}}});
+  var lx0=null;lp.addEventListener("touchstart",function(e){lx0=e.touches[0].clientX},{passive:true});
+  lp.addEventListener("touchend",function(e){if(lx0==null)return;var dx=e.changedTouches[0].clientX-lx0;if(Math.abs(dx)>70){if(dx<0&&lpSel<PASAL.length-1)renderLp(lpSel+1,[]);if(dx>0&&lpSel>0)renderLp(lpSel-1,[])}lx0=null},{passive:true});
+
   // ===== NAVIGASI =====
   var cur=0,scenes=document.querySelectorAll(".scene"),tabs=document.querySelectorAll(".tabs button"),dots=document.getElementById("dots");
   scenes.forEach(function(_,i){var d=document.createElement("i");d.addEventListener("click",function(){go(i)});dots.appendChild(d)});
@@ -1049,7 +1223,7 @@ table.sop td.pel.off{background:#7F7F7F}
     var facts=cases.map(function(c){return (c.full||c.n)+" · putusan "+tgl(c.d)+" · "+c.st+": "+c.tahap});
     var t=document.getElementById("tkT");function tk(){t.style.animation="none";void t.offsetWidth;t.style.animation="";t.textContent=facts[tkI%facts.length];tkI++}tk();clearInterval(tkTimer);tkTimer=setInterval(tk,3200)}
   var drawers=[drawDash,function(){renderDetail();drawBoard()},function(){drawCmp();drawDonut(true);drawTable()},function(){drawSOP();drawSteps();requestAnimationFrame(sopArrowsAll)},drawWajib];
-  function go(n){cur=Math.max(0,Math.min(scenes.length-1,n));hideTip();clearInterval(sopTimer);clearInterval(tkTimer);
+  function go(n){closeLp();cur=Math.max(0,Math.min(scenes.length-1,n));hideTip();clearInterval(sopTimer);clearInterval(tkTimer);
     scenes.forEach(function(s,i){s.classList.toggle("on",i===cur)});tabs.forEach(function(b,i){b.setAttribute("aria-selected",i===cur?"true":"false");if(i===cur)b.scrollIntoView({block:"nearest",inline:"center"})});
     dots.querySelectorAll("i").forEach(function(d,i){d.classList.toggle("on",i===cur)});
     document.getElementById("prev").disabled=cur===0;document.getElementById("next").innerHTML=cur===scenes.length-1?"Kembali<span class='t'> ke awal</span>":"Berikutnya ›";
@@ -1059,8 +1233,8 @@ table.sop td.pel.off{background:#7F7F7F}
   document.querySelectorAll("[data-go]").forEach(function(b){b.addEventListener("click",function(){go(+b.dataset.go)})});
   document.getElementById("prev").addEventListener("click",function(){go(cur-1)});
   document.getElementById("next").addEventListener("click",function(){go(cur===scenes.length-1?0:cur+1)});
-  document.addEventListener("keydown",function(e){if(e.target.tagName==="INPUT")return;if(e.key==="ArrowRight"||e.key==="PageDown")go(cur+1);if(e.key==="ArrowLeft"||e.key==="PageUp")go(cur-1)});
-  var sx0=null;document.addEventListener("touchstart",function(e){sx0=e.touches[0].clientX},{passive:true});document.addEventListener("touchend",function(e){if(sx0==null)return;var dx=e.changedTouches[0].clientX-sx0;if(Math.abs(dx)>70&&!e.target.closest("svg,.tabs"))go(dx<0?cur+1:cur-1);sx0=null},{passive:true});
+  document.addEventListener("keydown",function(e){if(e.target.tagName==="INPUT"||!lp.hidden)return;if(e.key==="ArrowRight"||e.key==="PageDown")go(cur+1);if(e.key==="ArrowLeft"||e.key==="PageUp")go(cur-1)});
+  var sx0=null;document.addEventListener("touchstart",function(e){sx0=e.touches[0].clientX},{passive:true});document.addEventListener("touchend",function(e){if(sx0==null)return;if(!lp.hidden){sx0=null;return}var dx=e.changedTouches[0].clientX-sx0;if(Math.abs(dx)>70&&!e.target.closest("svg,.tabs"))go(dx<0?cur+1:cur-1);sx0=null},{passive:true});
   var rt;window.addEventListener("resize",function(){clearTimeout(rt);rt=setTimeout(function(){if(cur===2){drawCmp();drawDonut(false)}if(cur===3)sopArrowsAll()},200)});
   var st=0;try{st=+(localStorage.getItem("bhp-data-scene3")||0)}catch(e){}
   if(location.hash==="#dashboard"){st=0;try{history.replaceState(null,"",location.pathname+location.search)}catch(e){}}
