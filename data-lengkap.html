@@ -296,7 +296,7 @@ document.addEventListener("mouseout",function(e){if(asked||!canHover||e.relatedT
 /* filter fase */
 var fSel=null,flow=document.getElementById("flow");
 function drawFlow(){flow.innerHTML="";FASE.forEach(function(f,i){var n=cases.filter(function(c){return faseOf(c.s)===i}).length,b=document.createElement("button");b.className="ph";b.setAttribute("aria-pressed",fSel===i?"true":"false");
-  b.innerHTML="<span class='k'>Fase "+(i+1)+" · tahap "+f.a+"–"+f.b+"</span><span class='t'>"+f.n+"</span><span class='c"+(n?"":" z")+"'>"+n+"</span>";
+  b.innerHTML="<span class='k'>Fase "+(i+1)+" · tahap "+f.a+" sampai "+f.b+"</span><span class='t'>"+f.n+"</span><span class='c"+(n?"":" z")+"'>"+n+"</span>";
   b.addEventListener("click",function(){fSel=fSel===i?null:i;drawFlow();drawCards()});flow.appendChild(b)})}
 
 /* kartu perkara: tanpa nominal */
